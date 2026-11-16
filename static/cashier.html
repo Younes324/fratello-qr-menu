@@ -1,0 +1,1912 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>Caisse — Pizzeria Fratello Beşiktaş</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bjk-black: #120f0f;
+            --bjk-dark: #1d1818;
+            --turkish-red: #c8102e;
+            --turkish-red-dark: #8f091f;
+            --star-gold: #ffcc00;
+            --card-bg: rgba(28, 23, 23, 0.88);
+            --text-main: #fafafa;
+            --text-muted: #d4d4d8;
+            --border-warm: rgba(255, 204, 0, 0.24);
+            --success-green: #16a34a;
+        }
+
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            margin: 0 auto;
+            padding: 0 0 85px 0;
+            max-width: 1140px;
+            background-color: #161111;
+            color: var(--text-main);
+            position: relative;
+            min-height: 100vh;
+        }
+
+        /* --- FIXED PIZZERIA KITCHEN & PIZZA ILLUSTRATED BACKGROUND --- */
+        .pizzeria-wallpaper {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+            background:
+                radial-gradient(circle at 50% 15%, rgba(200, 16, 46, 0.22) 0%, transparent 55%),
+                radial-gradient(circle at 80% 75%, rgba(255, 165, 0, 0.14) 0%, transparent 50%),
+                #161111;
+            overflow: hidden;
+        }
+        .pizzeria-wallpaper svg {
+            width: 100%;
+            height: 100%;
+            opacity: 0.34;
+        }
+
+        /* --- HERO HEADER --- */
+        .hero {
+            background: linear-gradient(145deg, rgba(18, 15, 15, 0.96) 0%, rgba(45, 14, 18, 0.95) 60%, rgba(143, 9, 31, 0.95) 100%);
+            color: white;
+            padding: 16px 20px;
+            border-bottom: 3px solid var(--star-gold);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+        }
+        .hero-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+        .hero-left {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .chef-mascot {
+            width: 84px;
+            height: 84px;
+            flex-shrink: 0;
+            filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.55));
+            animation: chefFloat 3.5s ease-in-out infinite;
+        }
+        @keyframes chefFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-3px) rotate(1.5deg); }
+        }
+        .stars-row {
+            color: var(--star-gold);
+            font-size: 11px;
+            letter-spacing: 3px;
+            margin-bottom: 3px;
+        }
+        .brand-badge {
+            display: inline-block;
+            background: var(--turkish-red);
+            color: white;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 1.4px;
+            text-transform: uppercase;
+            padding: 3px 8px;
+            border-radius: 4px;
+            margin-bottom: 5px;
+            border: 1px solid rgba(255, 204, 0, 0.4);
+        }
+        .hero h1 {
+            font-family: 'Oswald', sans-serif;
+            margin: 0;
+            font-size: 26px;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+            line-height: 1.08;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+        }
+        .hero h1 span { color: var(--star-gold); }
+        .hero-tagline {
+            margin: 4px 0 0 0;
+            font-size: 12.5px;
+            color: #e4e4e7;
+            font-style: italic;
+        }
+
+        .hero-controls {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            flex-wrap: wrap;
+        }
+        .btn-counter-order {
+            background: var(--turkish-red);
+            color: white;
+            border: 2px solid var(--star-gold);
+            padding: 9px 15px;
+            border-radius: 9px;
+            font-size: 13.5px;
+            font-weight: 800;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 4px 14px rgba(200, 16, 46, 0.5);
+        }
+        .btn-calc-header {
+            background: #272020;
+            color: var(--star-gold);
+            border: 1.5px solid var(--star-gold);
+            padding: 9px 13px;
+            border-radius: 9px;
+            font-size: 13px;
+            font-weight: 800;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .live-pill {
+            background: rgba(0, 0, 0, 0.45);
+            border: 1px solid rgba(74, 222, 128, 0.5);
+            color: #86efac;
+            padding: 8px 11px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .live-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #4ade80;
+            box-shadow: 0 0 8px #4ade80;
+        }
+        .btn-sound {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--star-gold);
+            border: 1px solid rgba(255, 204, 0, 0.45);
+            padding: 8px 11px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 800;
+            cursor: pointer;
+        }
+        .btn-kitchen-link {
+            background: var(--star-gold);
+            color: #120f0f;
+            text-decoration: none;
+            padding: 8px 13px;
+            border-radius: 8px;
+            font-size: 12.5px;
+            font-weight: 800;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* --- TOAST CONFIRMATION --- */
+        .pos-toast {
+            position: fixed;
+            top: 18px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #14532d;
+            color: #bbf7d0;
+            border: 2px solid #4ade80;
+            padding: 12px 20px;
+            border-radius: 10px;
+            font-weight: 800;
+            font-size: 14px;
+            z-index: 5000;
+            display: none;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.65);
+        }
+
+        /* --- MAIN DASHBOARD GRID --- */
+        .dashboard-wrap {
+            padding: 16px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 18px;
+        }
+        .top-row {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        @media (min-width: 860px) {
+            .top-row {
+                display: grid;
+                grid-template-columns: 1fr 1.35fr;
+                gap: 18px;
+                align-items: start;
+            }
+        }
+
+        .panel {
+            background: var(--card-bg);
+            backdrop-filter: blur(8px);
+            border: 1px solid var(--border-warm);
+            border-radius: 14px;
+            padding: 16px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .section-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0 0 14px 0;
+            padding: 6px 10px;
+            background: rgba(18, 14, 14, 0.78);
+            border-radius: 8px;
+            border-left: 4px solid var(--star-gold);
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .section-heading.crimson { border-left-color: var(--turkish-red); }
+        .section-heading h2 {
+            font-family: 'Oswald', sans-serif;
+            margin: 0;
+            font-size: 19px;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            color: #ffffff;
+        }
+        .badge-count {
+            font-size: 12px;
+            font-weight: 800;
+            color: var(--star-gold);
+            background: rgba(200, 16, 46, 0.4);
+            border: 1px solid rgba(255, 204, 0, 0.4);
+            padding: 3px 9px;
+            border-radius: 12px;
+        }
+
+        /* --- NOTIFICATIONS --- */
+        .notif-alert {
+            background: linear-gradient(90deg, rgba(200, 16, 46, 0.92), rgba(143, 9, 31, 0.92));
+            border: 1.5px solid var(--star-gold);
+            color: white;
+            padding: 12px 14px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 13.5px;
+            box-shadow: 0 4px 12px rgba(200, 16, 46, 0.35);
+        }
+        .btn-dismiss {
+            background: var(--star-gold);
+            color: #120f0f;
+            border: none;
+            padding: 7px 14px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-weight: 800;
+            font-size: 12.5px;
+            white-space: nowrap;
+        }
+
+        /* --- PENDING ORDERS --- */
+        .order-card {
+            background: rgba(18, 14, 14, 0.85);
+            border: 1.5px solid var(--star-gold);
+            border-radius: 12px;
+            padding: 14px;
+            margin-bottom: 12px;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+        }
+        .order-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 8px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+        }
+        .table-tag {
+            background: var(--turkish-red);
+            color: white;
+            font-family: 'Oswald', sans-serif;
+            font-size: 17px;
+            padding: 3px 10px;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 204, 0, 0.45);
+            letter-spacing: 0.5px;
+        }
+        .order-id {
+            font-size: 13px;
+            font-weight: 800;
+            color: var(--star-gold);
+        }
+        .order-items-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 12px 0;
+        }
+        .order-items-list li {
+            padding: 5px 8px;
+            margin-bottom: 5px;
+            background: rgba(255, 255, 255, 0.06);
+            border-left: 3px solid var(--star-gold);
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #ffffff;
+        }
+        .order-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding-top: 10px;
+            border-top: 1px dashed rgba(255, 255, 255, 0.18);
+        }
+        .order-total {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--star-gold);
+        }
+        .order-actions {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+        .btn-calc-order {
+            background: rgba(255, 204, 0, 0.16);
+            color: var(--star-gold);
+            border: 1px solid var(--star-gold);
+            padding: 9px 11px;
+            cursor: pointer;
+            border-radius: 8px;
+            font-weight: 800;
+            font-size: 12.5px;
+        }
+        .btn-approve {
+            background: var(--success-green);
+            color: white;
+            padding: 9px 14px;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+            font-weight: 800;
+            font-size: 13px;
+        }
+        .btn-decline {
+            background: rgba(200, 16, 46, 0.25);
+            color: #fca5a5;
+            border: 1px solid rgba(200, 16, 46, 0.65);
+            padding: 9px 12px;
+            cursor: pointer;
+            border-radius: 8px;
+            font-weight: 800;
+            font-size: 13px;
+        }
+
+        /* --- STOCK MANAGEMENT --- */
+        .stock-toolbar {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 14px;
+        }
+        .stock-search {
+            width: 100%;
+            background: rgba(18, 14, 14, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 9px 12px;
+            border-radius: 8px;
+            font-size: 13.5px;
+            font-family: inherit;
+            outline: none;
+        }
+        .stock-search:focus { border-color: var(--star-gold); }
+
+        .stock-tabs {
+            display: flex;
+            overflow-x: auto;
+            gap: 8px;
+            padding-bottom: 4px;
+            scrollbar-width: none;
+        }
+        .stock-tabs::-webkit-scrollbar { display: none; }
+        .stock-tab-btn {
+            background: rgba(18, 14, 14, 0.9);
+            color: #e4e4e7;
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        .stock-tab-btn.active {
+            background: var(--turkish-red);
+            color: white;
+            border-color: var(--star-gold);
+        }
+
+        .stock-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(215px, 1fr));
+            gap: 10px;
+        }
+        .stock-item {
+            background: rgba(18, 14, 14, 0.85);
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 10px;
+        }
+        .stock-item.sold-out {
+            border-color: rgba(200, 16, 46, 0.65);
+            background: rgba(45, 12, 16, 0.72);
+        }
+        .stock-item-title {
+            font-size: 15px;
+            font-weight: 800;
+            color: #ffffff;
+        }
+        .stock-item-meta {
+            font-size: 12px;
+            color: var(--star-gold);
+            font-weight: 700;
+            margin-top: 2px;
+        }
+        .status-pill {
+            display: inline-block;
+            font-size: 11.5px;
+            font-weight: 800;
+            padding: 3px 8px;
+            border-radius: 6px;
+            margin-top: 6px;
+        }
+        .status-pill.avail {
+            background: rgba(22, 163, 74, 0.22);
+            color: #86efac;
+            border: 1px solid rgba(74, 222, 128, 0.45);
+        }
+        .status-pill.out {
+            background: rgba(200, 16, 46, 0.28);
+            color: #fca5a5;
+            border: 1px solid rgba(248, 113, 113, 0.5);
+        }
+        .btn-stock {
+            background: var(--star-gold);
+            color: #120f0f;
+            border: none;
+            padding: 8px 10px;
+            cursor: pointer;
+            border-radius: 7px;
+            font-weight: 800;
+            font-size: 12.5px;
+            width: 100%;
+        }
+        .btn-soldout {
+            background: rgba(200, 16, 46, 0.85);
+            color: white;
+            border: 1px solid rgba(255, 204, 0, 0.35);
+            padding: 8px 10px;
+            cursor: pointer;
+            border-radius: 7px;
+            font-weight: 800;
+            font-size: 12.5px;
+            width: 100%;
+        }
+        .empty-state {
+            color: #a1a1aa;
+            font-size: 13.5px;
+            margin: 6px 0;
+            text-align: center;
+            padding: 14px;
+            background: rgba(0, 0, 0, 0.25);
+            border-radius: 8px;
+        }
+
+        /* --- COUNTER / TO-GO POS MODAL --- */
+        .pos-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.82);
+            backdrop-filter: blur(6px);
+            z-index: 2000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 12px;
+        }
+        .pos-modal {
+            background: #1a1515;
+            border: 2px solid var(--star-gold);
+            border-top: 5px solid var(--turkish-red);
+            border-radius: 16px;
+            width: 100%;
+            max-width: 980px;
+            max-height: 92vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.85);
+        }
+        .pos-header {
+            background: #120f0f;
+            padding: 14px 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 204, 0, 0.25);
+            gap: 10px;
+        }
+        .pos-header h3 {
+            font-family: 'Oswald', sans-serif;
+            margin: 0;
+            font-size: 21px;
+            text-transform: uppercase;
+            color: white;
+        }
+        .pos-header h3 span { color: var(--star-gold); }
+        .btn-close-modal {
+            background: rgba(255, 255, 255, 0.12);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            padding: 6px 12px;
+            font-weight: 800;
+            cursor: pointer;
+        }
+        .pos-body {
+            display: grid;
+            grid-template-columns: 1fr;
+            overflow-y: auto;
+            flex: 1;
+        }
+        @media (min-width: 780px) {
+            .pos-body {
+                grid-template-columns: 1.45fr 1fr;
+                overflow: hidden;
+            }
+            .pos-menu-pane {
+                overflow-y: auto;
+                max-height: calc(92vh - 64px);
+            }
+            .pos-cart-pane {
+                overflow-y: auto;
+                max-height: calc(92vh - 64px);
+                border-left: 1px solid rgba(255, 204, 0, 0.25);
+            }
+        }
+        .pos-menu-pane { padding: 14px; }
+        .pos-cart-pane {
+            padding: 14px;
+            background: #120f0f;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 12px;
+        }
+        .dest-bar {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 204, 0, 0.2);
+        }
+        .dest-label { font-size: 12.5px; font-weight: 800; color: var(--star-gold); }
+        .dest-select {
+            background: #241e1e;
+            color: white;
+            border: 1.5px solid var(--star-gold);
+            padding: 7px 12px;
+            border-radius: 8px;
+            font-weight: 800;
+            font-size: 13.5px;
+            font-family: inherit;
+            flex: 1;
+            min-width: 190px;
+        }
+        .pos-item-card {
+            background: #241e1e;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 10px;
+            padding: 11px;
+            margin-bottom: 9px;
+        }
+        .pos-item-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+        }
+        .pos-variants {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 6px;
+            margin-top: 9px;
+            padding-top: 8px;
+            border-top: 1px dashed rgba(255, 255, 255, 0.15);
+        }
+        .pos-v-btn {
+            background: #141111;
+            border: 1px solid rgba(255, 204, 0, 0.4);
+            color: white;
+            border-radius: 7px;
+            padding: 6px 4px;
+            cursor: pointer;
+            font-size: 11.5px;
+            font-weight: 800;
+            text-align: center;
+        }
+        .pos-v-btn span { display: block; color: var(--star-gold); font-size: 12px; }
+        .pos-add-btn {
+            background: var(--star-gold);
+            color: #120f0f;
+            border: none;
+            padding: 7px 12px;
+            border-radius: 7px;
+            font-weight: 800;
+            font-size: 12.5px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        .pos-cart-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 7px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            gap: 8px;
+            font-size: 13px;
+        }
+        .pos-del-btn {
+            background: rgba(200, 16, 46, 0.25);
+            color: #fca5a5;
+            border: 1px solid rgba(200, 16, 46, 0.5);
+            border-radius: 5px;
+            width: 24px;
+            height: 24px;
+            font-weight: 800;
+            cursor: pointer;
+        }
+        .btn-pos-submit {
+            background: var(--success-green);
+            color: white;
+            border: 1px solid #86efac;
+            width: 100%;
+            padding: 13px;
+            border-radius: 10px;
+            font-size: 14.5px;
+            font-weight: 800;
+            text-transform: uppercase;
+            cursor: pointer;
+            box-shadow: 0 4px 14px rgba(22, 163, 74, 0.4);
+        }
+
+        /* --- ALWAYS-ACCESSIBLE FLOATING CALCULATOR (z-index: 9999) --- */
+        .calc-fab {
+            position: fixed;
+            bottom: 18px;
+            right: 18px;
+            z-index: 9999;
+            background: linear-gradient(135deg, #181414, #2b1216);
+            color: var(--star-gold);
+            border: 2px solid var(--star-gold);
+            border-radius: 50px;
+            padding: 12px 18px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 8px 26px rgba(0, 0, 0, 0.75);
+        }
+        .calc-fab:active { transform: scale(0.95); }
+
+        .calc-widget {
+            position: fixed;
+            bottom: 76px;
+            right: 18px;
+            z-index: 10000;
+            width: 325px;
+            max-width: calc(100vw - 24px);
+            background: #141010;
+            border: 2px solid var(--star-gold);
+            border-top: 5px solid var(--turkish-red);
+            border-radius: 16px;
+            box-shadow: 0 18px 48px rgba(0, 0, 0, 0.9);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .calc-head {
+            background: #1e1717;
+            padding: 10px 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 204, 0, 0.25);
+        }
+        .calc-head span {
+            font-family: 'Oswald', sans-serif;
+            font-size: 16px;
+            text-transform: uppercase;
+            color: var(--star-gold);
+            letter-spacing: 0.5px;
+        }
+        .calc-close {
+            background: rgba(255, 255, 255, 0.12);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 4px 9px;
+            font-weight: 800;
+            cursor: pointer;
+        }
+        .calc-body { padding: 12px; }
+        .calc-screen {
+            background: #0a0808;
+            border: 1.5px solid rgba(255, 204, 0, 0.35);
+            border-radius: 10px;
+            padding: 10px 12px;
+            text-align: right;
+            margin-bottom: 10px;
+        }
+        .calc-expr {
+            font-size: 12px;
+            color: #a1a1aa;
+            min-height: 16px;
+            word-break: break-all;
+        }
+        .calc-display {
+            font-family: 'Oswald', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+            overflow-x: auto;
+        }
+
+        /* Quick Change (Rendu Monnaie) Strip */
+        .change-box {
+            background: rgba(255, 204, 0, 0.08);
+            border: 1px solid rgba(255, 204, 0, 0.28);
+            border-radius: 10px;
+            padding: 8px 10px;
+            margin-bottom: 10px;
+        }
+        .change-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            margin-bottom: 6px;
+            gap: 6px;
+        }
+        .change-input {
+            width: 96px;
+            background: #0a0808;
+            border: 1px solid var(--star-gold);
+            color: var(--star-gold);
+            font-weight: 800;
+            font-size: 13px;
+            padding: 4px 7px;
+            border-radius: 6px;
+            text-align: right;
+        }
+        .bills-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 5px;
+            margin-bottom: 6px;
+        }
+        .bill-btn {
+            background: #261e1e;
+            border: 1px solid rgba(255, 204, 0, 0.4);
+            color: var(--star-gold);
+            font-size: 11px;
+            font-weight: 800;
+            padding: 5px 2px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        .bill-btn:active { background: var(--turkish-red); color: white; }
+        .change-result {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 5px;
+            border-top: 1px dashed rgba(255, 255, 255, 0.15);
+            font-size: 13px;
+            font-weight: 800;
+        }
+
+        .calc-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 6px;
+        }
+        .c-key {
+            background: #241e1e;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            border-radius: 8px;
+            padding: 11px 4px;
+            font-size: 16px;
+            font-weight: 800;
+            cursor: pointer;
+        }
+        .c-key:active { transform: scale(0.94); }
+        .c-key.op {
+            background: rgba(200, 16, 46, 0.35);
+            border-color: rgba(255, 204, 0, 0.35);
+            color: var(--star-gold);
+        }
+        .c-key.clear {
+            background: rgba(200, 16, 46, 0.8);
+            color: white;
+        }
+        .c-key.eq {
+            background: var(--star-gold);
+            color: #120f0f;
+            border-color: var(--star-gold);
+        }
+    </style>
+</head>
+<body>
+
+    <div id="pos-toast" class="pos-toast"></div>
+
+    <!-- Seamless Illustrated Wallpaper -->
+    <div class="pizzeria-wallpaper" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <pattern id="fratello-cashier-bg" width="240" height="240" patternUnits="userSpaceOnUse">
+                    <g transform="translate(18, 18)">
+                        <path d="M10 68 L10 38 C10 14, 78 14, 78 38 L78 68 Z" fill="#8f2d1e" stroke="#ffcc00" stroke-width="2"/>
+                        <rect x="4" y="66" width="80" height="10" rx="3" fill="#b45309" stroke="#ffcc00" stroke-width="1.5"/>
+                        <line x1="16" y1="32" x2="72" y2="32" stroke="#451a03" stroke-width="2"/>
+                        <line x1="11" y1="48" x2="77" y2="48" stroke="#451a03" stroke-width="2"/>
+                        <path d="M27 66 L27 46 C27 32, 61 32, 61 46 L61 66 Z" fill="#1c0a00" stroke="#fbbf24" stroke-width="2"/>
+                        <path d="M36 65 C34 55, 42 50, 44 43 C48 50, 54 54, 51 65 Z" fill="#f97316"/>
+                        <path d="M40 65 C39 58, 43 55, 44 51 C46 55, 49 58, 47 65 Z" fill="#fde047"/>
+                        <rect x="36" y="4" width="16" height="16" fill="#9a3412" stroke="#ffcc00" stroke-width="1.5"/>
+                    </g>
+                    <g transform="translate(142, 22)">
+                        <circle cx="40" cy="40" r="36" fill="#d97706" stroke="#fde047" stroke-width="2.5"/>
+                        <circle cx="40" cy="40" r="30" fill="#dc2626"/>
+                        <circle cx="40" cy="40" r="27" fill="#facc15"/>
+                        <line x1="40" y1="10" x2="40" y2="70" stroke="#b45309" stroke-width="1.5"/>
+                        <line x1="10" y1="40" x2="70" y2="40" stroke="#b45309" stroke-width="1.5"/>
+                        <line x1="19" y1="19" x2="61" y2="61" stroke="#b45309" stroke-width="1.5"/>
+                        <line x1="61" y1="19" x2="19" y2="61" stroke="#b45309" stroke-width="1.5"/>
+                        <circle cx="29" cy="26" r="4.5" fill="#b91c1c"/>
+                        <circle cx="52" cy="27" r="4.5" fill="#b91c1c"/>
+                        <circle cx="27" cy="52" r="4.5" fill="#b91c1c"/>
+                        <circle cx="51" cy="51" r="4.5" fill="#b91c1c"/>
+                        <circle cx="40" cy="23" r="2.8" fill="#18181b"/>
+                        <circle cx="55" cy="40" r="2.8" fill="#18181b"/>
+                        <circle cx="25" cy="40" r="2.8" fill="#18181b"/>
+                        <circle cx="40" cy="56" r="2.8" fill="#18181b"/>
+                    </g>
+                    <g transform="translate(95, 108) rotate(-25)">
+                        <rect x="0" y="8" width="54" height="12" rx="4" fill="#d97706" stroke="#fde047" stroke-width="1.5"/>
+                        <rect x="-10" y="11" width="10" height="6" rx="2" fill="#92400e"/>
+                        <rect x="54" y="11" width="10" height="6" rx="2" fill="#92400e"/>
+                    </g>
+                    <g transform="translate(26, 136) rotate(12)">
+                        <path d="M8 10 Q38 0 68 10 L38 74 Z" fill="#facc15" stroke="#fde047" stroke-width="2"/>
+                        <path d="M6 10 Q38 -2 70 10 L66 18 Q38 8 10 18 Z" fill="#d97706"/>
+                        <circle cx="32" cy="28" r="5" fill="#dc2626"/>
+                        <circle cx="46" cy="34" r="4.5" fill="#dc2626"/>
+                        <circle cx="38" cy="48" r="4" fill="#dc2626"/>
+                        <circle cx="26" cy="39" r="2.5" fill="#18181b"/>
+                        <circle cx="43" cy="22" r="2.5" fill="#18181b"/>
+                    </g>
+                    <g transform="translate(145, 138)">
+                        <path d="M22 44 L22 32 C12 30, 10 16, 22 14 C25 4, 47 4, 50 14 C62 16, 60 30, 50 32 L50 44 Z" fill="#f4f4f5" stroke="#ffcc00" stroke-width="2"/>
+                        <rect x="22" y="38" width="28" height="7" fill="#c8102e"/>
+                        <path d="M12 64 C20 54, 34 56, 36 66 C26 70, 16 68, 12 64 Z" fill="#16a34a" stroke="#86efac" stroke-width="1"/>
+                        <path d="M64 60 C54 52, 42 56, 42 66 C52 68, 60 66, 64 60 Z" fill="#15803d" stroke="#86efac" stroke-width="1"/>
+                    </g>
+                    <text x="112" y="34" fill="#ffcc00" font-size="14">★</text>
+                    <text x="16" y="118" fill="#ffcc00" font-size="12">★</text>
+                    <text x="215" y="122" fill="#ffcc00" font-size="13">★</text>
+                </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#fratello-cashier-bg)"/>
+        </svg>
+    </div>
+
+    <!-- Header -->
+    <header class="hero">
+        <div class="hero-inner">
+            <div class="hero-left">
+                <div class="chef-mascot" aria-hidden="true">
+                    <svg viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="72" cy="70" r="56" fill="rgba(255, 204, 0, 0.14)" stroke="rgba(255, 204, 0, 0.35)" stroke-width="1.5" stroke-dasharray="4 3"/>
+                        <path d="M44 46 L44 33 C30 31, 28 14, 44 12 C48 2, 84 2, 88 12 C104 14, 102 31, 88 33 L88 46 Z" fill="#ffffff" stroke="#18181b" stroke-width="2.5"/>
+                        <rect x="44" y="38" width="44" height="9" rx="2" fill="#c8102e" stroke="#18181b" stroke-width="2"/>
+                        <circle cx="64" cy="42.5" r="3" fill="#ffffff"/>
+                        <circle cx="65.3" cy="42.5" r="2.3" fill="#c8102e"/>
+                        <polygon points="69,41 69.7,42.3 71.2,42.3 70,43.2 70.4,44.6 69,43.8 67.6,44.6 68,43.2 66.8,42.3 68.3,42.3" fill="#ffffff"/>
+                        <circle cx="43" cy="63" r="5.5" fill="#f5c29b" stroke="#18181b" stroke-width="2"/>
+                        <circle cx="89" cy="63" r="5.5" fill="#f5c29b" stroke="#18181b" stroke-width="2"/>
+                        <path d="M45 47 L87 47 L85 72 C85 84, 47 84, 47 72 Z" fill="#fbd0ae" stroke="#18181b" stroke-width="2.5"/>
+                        <path d="M53 56 Q58 52 62 56" fill="none" stroke="#18181b" stroke-width="2.5" stroke-linecap="round"/>
+                        <path d="M70 56 Q74 52 79 56" fill="none" stroke="#18181b" stroke-width="2.5" stroke-linecap="round"/>
+                        <circle cx="58" cy="61" r="2.8" fill="#18181b"/>
+                        <circle cx="74" cy="61" r="2.8" fill="#18181b"/>
+                        <circle cx="59" cy="60" r="0.9" fill="#ffffff"/>
+                        <circle cx="75" cy="60" r="0.9" fill="#ffffff"/>
+                        <circle cx="51" cy="67" r="3.5" fill="#f87171" opacity="0.6"/>
+                        <circle cx="81" cy="67" r="3.5" fill="#f87171" opacity="0.6"/>
+                        <path d="M66 60 Q69 65 65 67" fill="none" stroke="#18181b" stroke-width="2.2" stroke-linecap="round"/>
+                        <path d="M66 70 C60 66, 48 68, 45 63 C44 71, 56 75, 66 72 C76 75, 88 71, 87 63 C84 68, 72 66, 66 70 Z" fill="#27272a" stroke="#18181b" stroke-width="1.5"/>
+                        <path d="M59 75 Q66 81 73 75" fill="#ffffff" stroke="#18181b" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M36 126 C36 96, 46 86, 66 86 C86 86, 96 96, 96 126 Z" fill="#ffffff" stroke="#18181b" stroke-width="2.5"/>
+                        <path d="M51 85 L66 96 L81 85 L76 81 L66 89 L56 81 Z" fill="#18181b"/>
+                        <path d="M62 94 L58 106 L65 106 L66 96 Z" fill="#18181b"/>
+                        <path d="M70 94 L74 106 L67 106 L66 96 Z" fill="#c8102e"/>
+                        <circle cx="66" cy="112" r="2.2" fill="#ffcc00" stroke="#18181b" stroke-width="1"/>
+                        <circle cx="66" cy="120" r="2.2" fill="#ffcc00" stroke="#18181b" stroke-width="1"/>
+                        <line x1="8" y1="112" x2="48" y2="104" stroke="#92400e" stroke-width="5" stroke-linecap="round"/>
+                        <ellipse cx="42" cy="103" rx="28" ry="10" fill="#d97706" stroke="#18181b" stroke-width="2"/>
+                        <ellipse cx="42" cy="101" rx="23" ry="7.5" fill="#facc15" stroke="#dc2626" stroke-width="1.8"/>
+                        <circle cx="34" cy="100" r="2.5" fill="#dc2626"/>
+                        <circle cx="45" cy="102" r="2.5" fill="#dc2626"/>
+                        <circle cx="52" cy="99" r="2" fill="#18181b"/>
+                        <circle cx="38" cy="103" r="1.8" fill="#16a34a"/>
+                        <path d="M32 89 Q29 83 33 78" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" opacity="0.85"/>
+                        <path d="M44 87 Q41 81 45 76" fill="none" stroke="#ffcc00" stroke-width="1.8" stroke-linecap="round" opacity="0.9"/>
+                        <path d="M54 90 Q51 84 55 79" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" opacity="0.85"/>
+                    </svg>
+                </div>
+
+                <div>
+                    <div class="stars-row">★ ★ ★</div>
+                    <div class="brand-badge">Poste Caisse &amp; Gestion</div>
+                    <h1>FRATELLO <span>BEŞİKTAŞ</span></h1>
+                    <p class="hero-tagline">Validation, prises comptoir &amp; calculatrice</p>
+                </div>
+            </div>
+
+            <div class="hero-controls">
+                <button class="btn-counter-order" onclick="openPosModal()">🛍️ Commande Comptoir</button>
+                <button class="btn-calc-header" onclick="toggleCalc()" title="Raccourci : F2">🧮 Calculatrice</button>
+                <div class="live-pill"><span class="live-dot"></span> En direct</div>
+                <button id="sound-toggle" class="btn-sound" onclick="toggleSound()">🔔 Son: Activé</button>
+                <a href="/kitchen" target="_blank" class="btn-kitchen-link">🍳 Cuisine ↗</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="dashboard-wrap">
+        <div class="top-row">
+            <section class="panel">
+                <div class="section-heading crimson">
+                    <h2>🔔 Alertes Tables</h2>
+                    <span id="notif-count" class="badge-count">0</span>
+                </div>
+                <div id="notifications-box">
+                    <div class="empty-state">Aucune alerte en cours.</div>
+                </div>
+            </section>
+
+            <section class="panel">
+                <div class="section-heading">
+                    <h2>💵 Commandes en Attente</h2>
+                    <span id="pending-count" class="badge-count">0</span>
+                </div>
+                <div id="orders-list">
+                    <div class="empty-state">Aucune commande en attente.</div>
+                </div>
+            </section>
+        </div>
+
+        <!-- STOCK MANAGEMENT PANEL -->
+        <section class="panel">
+            <div class="section-heading">
+                <h2>📦 Gestion des Stocks (Menu Client)</h2>
+                <span id="stock-cat-count" class="badge-count">0 plat(s)</span>
+            </div>
+
+            <div class="stock-toolbar">
+                <input id="stock-search" class="stock-search" type="text" placeholder="🔍 Filtrer un article en stock (ex: Merguez, Camembert, Fratello...)" oninput="handleStockSearch(this.value)">
+                <div id="stock-category-tabs" class="stock-tabs"></div>
+            </div>
+
+            <div id="stock-container" class="stock-grid"></div>
+        </section>
+    </main>
+
+    <!-- COUNTER / TO-GO POS MODAL -->
+    <div id="pos-overlay" class="pos-overlay" onclick="if(event.target===this) closePosModal()">
+        <div class="pos-modal">
+            <div class="pos-header">
+                <h3>🛍️ Nouvelle Commande <span>Comptoir / À Emporter</span></h3>
+                <div style="display:flex; gap:8px;">
+                    <button class="btn-calc-header" style="padding:6px 11px; font-size:12.5px;" onclick="openCalcWithTotal(getPosTotal())">🧮 Calculer rendu</button>
+                    <button class="btn-close-modal" onclick="closePosModal()">✕ Fermer</button>
+                </div>
+            </div>
+            <div class="pos-body">
+                <div class="pos-menu-pane">
+                    <div class="dest-bar">
+                        <span class="dest-label">Type / Table :</span>
+                        <select id="pos-dest-select" class="dest-select" onchange="posSelectedTable = parseInt(this.value)">
+                            <option value="0" selected>🛍️ À Emporter (Comptoir)</option>
+                            <option value="1">🪑 Table 1</option>
+                            <option value="2">🪑 Table 2</option>
+                            <option value="3">🪑 Table 3</option>
+                            <option value="4">🪑 Table 4</option>
+                            <option value="5">🪑 Table 5</option>
+                            <option value="6">🪑 Table 6</option>
+                            <option value="7">🪑 Table 7</option>
+                            <option value="8">🪑 Table 8</option>
+                            <option value="9">🪑 Table 9</option>
+                            <option value="10">🪑 Table 10</option>
+                            <option value="11">🪑 Table 11</option>
+                            <option value="12">🪑 Table 12</option>
+                            <option value="13">🪑 Table 13</option>
+                            <option value="14">🪑 Table 14</option>
+                        </select>
+                    </div>
+
+                    <input id="pos-search" class="stock-search" style="margin-bottom:10px;" type="text" placeholder="🔍 Rechercher un plat..." oninput="handlePosSearch(this.value)">
+                    <div id="pos-tabs" class="stock-tabs" style="margin-bottom:12px;"></div>
+                    <div id="pos-menu-list"></div>
+                </div>
+
+                <div class="pos-cart-pane">
+                    <div>
+                        <div class="section-heading" style="margin-bottom:10px;">
+                            <h2 style="font-size:16px;">🧾 Ticket Client</h2>
+                            <span id="pos-cart-count" class="badge-count">0</span>
+                        </div>
+                        <div id="pos-cart-items">
+                            <div class="empty-state">Sélectionnez des articles à gauche.</div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-top:1.5px solid rgba(255,204,0,0.35); font-size:18px; font-weight:800;">
+                            <span>Total</span>
+                            <span style="color:var(--star-gold);"><span id="pos-cart-total">0</span> DA</span>
+                        </div>
+                        <button class="btn-pos-submit" onclick="submitPosOrder()">✅ Encaisser &amp; Envoyer en Cuisine</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ALWAYS-ACCESSIBLE FLOATING CALCULATOR -->
+    <button class="calc-fab" onclick="toggleCalc()" title="Ouvrir la calculatrice (F2)">
+        🧮 Calculatrice
+    </button>
+
+    <div id="calc-widget" class="calc-widget" role="dialog" aria-label="Calculatrice Caisse">
+        <div class="calc-head">
+            <span>🧮 Calculatrice Caisse</span>
+            <button class="calc-close" onclick="toggleCalc()">✕</button>
+        </div>
+        <div class="calc-body">
+            <!-- Quick Change Calculator (Rendu Monnaie) -->
+            <div class="change-box">
+                <div class="change-row">
+                    <span style="color:#e4e4e7; font-weight:700;">Total Commande (DA) :</span>
+                    <input id="calc-order-total" class="change-input" type="number" min="0" value="0" oninput="updateChangeDisplay()">
+                </div>
+                <div class="bills-row">
+                    <button type="button" class="bill-btn" onclick="calcQuickCash(500)">500 DA</button>
+                    <button type="button" class="bill-btn" onclick="calcQuickCash(1000)">1000 DA</button>
+                    <button type="button" class="bill-btn" onclick="calcQuickCash(2000)">2000 DA</button>
+                    <button type="button" class="bill-btn" onclick="calcUseDisplayAsCash()">= Reçu</button>
+                </div>
+                <div class="change-result">
+                    <span style="color:#a1a1aa;">Monnaie à rendre :</span>
+                    <span id="calc-change-val" style="color:#86efac;">0 DA</span>
+                </div>
+            </div>
+
+            <!-- Standard Arithmetic Display -->
+            <div class="calc-screen">
+                <div id="calc-expr" class="calc-expr"></div>
+                <div id="calc-display" class="calc-display">0</div>
+            </div>
+
+            <!-- Keypad -->
+            <div class="calc-grid">
+                <button type="button" class="c-key clear" onclick="calcClear()">C</button>
+                <button type="button" class="c-key op" onclick="calcBackspace()">⌫</button>
+                <button type="button" class="c-key op" onclick="calcAppend('%')">%</button>
+                <button type="button" class="c-key op" onclick="calcAppend('/')">÷</button>
+
+                <button type="button" class="c-key" onclick="calcAppend('7')">7</button>
+                <button type="button" class="c-key" onclick="calcAppend('8')">8</button>
+                <button type="button" class="c-key" onclick="calcAppend('9')">9</button>
+                <button type="button" class="c-key op" onclick="calcAppend('*')">×</button>
+
+                <button type="button" class="c-key" onclick="calcAppend('4')">4</button>
+                <button type="button" class="c-key" onclick="calcAppend('5')">5</button>
+                <button type="button" class="c-key" onclick="calcAppend('6')">6</button>
+                <button type="button" class="c-key op" onclick="calcAppend('-')">−</button>
+
+                <button type="button" class="c-key" onclick="calcAppend('1')">1</button>
+                <button type="button" class="c-key" onclick="calcAppend('2')">2</button>
+                <button type="button" class="c-key" onclick="calcAppend('3')">3</button>
+                <button type="button" class="c-key op" onclick="calcAppend('+')">+</button>
+
+                <button type="button" class="c-key" onclick="calcAppend('0')">0</button>
+                <button type="button" class="c-key" onclick="calcAppend('00')">00</button>
+                <button type="button" class="c-key" onclick="calcAppend('.')">.</button>
+                <button type="button" class="c-key eq" onclick="calcEvaluate()">=</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let allStockItems = [];
+        let groupedStock = {};
+        let currentStockCategory = null;
+        let stockSearchQuery = '';
+        let soundEnabled = true;
+        let lastNotifIds = new Set();
+        let lastOrderIds = new Set();
+        let firstLoad = true;
+
+        /* POS State */
+        let posMenuItems = [];
+        let posGroupedMenu = {};
+        let posCurrentCategory = null;
+        let posSearchQuery = '';
+        let posSelectedTable = 0;
+        let posCart = {};
+
+        /* Calculator State */
+        let calcInput = '';
+        let cashGiven = 0;
+
+        const categoryOrder = ["Pizzas", "Sandwichs", "Tacos", "Burgers", "Bowls", "Calzon", "Salades", "Suppléments"];
+        const categoryIcons = {
+            "Pizzas": "🍕",
+            "Sandwichs": "🥖",
+            "Tacos": "🌮",
+            "Burgers": "🍔",
+            "Bowls": "🥗",
+            "Calzon": "🥟",
+            "Salades": "🥬",
+            "Suppléments": "➕"
+        };
+
+        function escapeHtml(str) {
+            return String(str || '')
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;');
+        }
+
+        function showPosToast(msg) {
+            const toast = document.getElementById('pos-toast');
+            toast.textContent = msg;
+            toast.style.display = 'block';
+            setTimeout(() => { toast.style.display = 'none'; }, 3500);
+        }
+
+        /* --- ALWAYS-ACCESSIBLE CALCULATOR LOGIC --- */
+        function toggleCalc() {
+            const w = document.getElementById('calc-widget');
+            const isOpen = w.style.display === 'flex';
+            if (!isOpen) {
+                const posOverlay = document.getElementById('pos-overlay');
+                if (posOverlay.style.display === 'flex') {
+                    const posTotal = getPosTotal();
+                    if (posTotal > 0) document.getElementById('calc-order-total').value = posTotal;
+                }
+                w.style.display = 'flex';
+                updateChangeDisplay();
+            } else {
+                w.style.display = 'none';
+            }
+        }
+
+        function openCalcWithTotal(amount) {
+            document.getElementById('calc-order-total').value = amount || 0;
+            cashGiven = 0;
+            calcInput = '';
+            document.getElementById('calc-expr').textContent = '';
+            document.getElementById('calc-display').textContent = '0';
+            document.getElementById('calc-widget').style.display = 'flex';
+            updateChangeDisplay();
+        }
+
+        function calcAppend(val) {
+            if (calcInput === 'Erreur') calcInput = '';
+            calcInput += val;
+            document.getElementById('calc-display').textContent = calcInput;
+        }
+
+        function calcClear() {
+            calcInput = '';
+            cashGiven = 0;
+            document.getElementById('calc-expr').textContent = '';
+            document.getElementById('calc-display').textContent = '0';
+            updateChangeDisplay();
+        }
+
+        function calcBackspace() {
+            if (calcInput === 'Erreur') {
+                calcInput = '';
+            } else {
+                calcInput = calcInput.slice(0, -1);
+            }
+            document.getElementById('calc-display').textContent = calcInput || '0';
+        }
+
+        function calcEvaluate() {
+            if (!calcInput) return;
+            try {
+                const sanitized = calcInput.replace(/%/g, '/100');
+                if (!/^[0-9+\-*/.() ]+$/.test(sanitized)) throw new Error('Invalid');
+                const result = Function('"use strict"; return (' + sanitized + ')')();
+                if (!isFinite(result)) throw new Error('Math');
+                const rounded = Math.round(result * 100) / 100;
+                document.getElementById('calc-expr').textContent = calcInput + ' =';
+                calcInput = String(rounded);
+                document.getElementById('calc-display').textContent = calcInput;
+            } catch (e) {
+                calcInput = 'Erreur';
+                document.getElementById('calc-display').textContent = 'Erreur';
+            }
+        }
+
+        function calcQuickCash(billAmount) {
+            cashGiven = billAmount;
+            calcInput = String(billAmount);
+            document.getElementById('calc-expr').textContent = 'Montant reçu :';
+            document.getElementById('calc-display').textContent = `${billAmount} DA`;
+            updateChangeDisplay();
+        }
+
+        function calcUseDisplayAsCash() {
+            calcEvaluate();
+            const val = parseFloat(calcInput);
+            if (!isNaN(val)) {
+                cashGiven = val;
+                updateChangeDisplay();
+            }
+        }
+
+        function updateChangeDisplay() {
+            const orderTotal = parseFloat(document.getElementById('calc-order-total').value) || 0;
+            const resEl = document.getElementById('calc-change-val');
+            if (cashGiven <= 0) {
+                resEl.style.color = '#a1a1aa';
+                resEl.textContent = 'Choisir billet';
+                return;
+            }
+            const diff = cashGiven - orderTotal;
+            if (diff >= 0) {
+                resEl.style.color = '#86efac';
+                resEl.textContent = `${diff} DA`;
+            } else {
+                resEl.style.color = '#fca5a5';
+                resEl.textContent = `Manque ${Math.abs(diff)} DA`;
+            }
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'F2') {
+                e.preventDefault();
+                toggleCalc();
+                return;
+            }
+            const w = document.getElementById('calc-widget');
+            if (w.style.display !== 'flex') return;
+            if (['INPUT', 'SELECT', 'TEXTAREA'].includes(document.activeElement.tagName)) return;
+
+            if (/^[0-9+\-*/.%]$/.test(e.key)) {
+                e.preventDefault();
+                calcAppend(e.key);
+            } else if (e.key === 'Enter' || e.key === '=') {
+                e.preventDefault();
+                calcEvaluate();
+            } else if (e.key === 'Backspace') {
+                e.preventDefault();
+                calcBackspace();
+            } else if (e.key === 'Escape') {
+                e.preventDefault();
+                w.style.display = 'none';
+            }
+        });
+
+        /* --- SOUND & ALERTS --- */
+        function toggleSound() {
+            soundEnabled = !soundEnabled;
+            const btn = document.getElementById('sound-toggle');
+            btn.textContent = soundEnabled ? '🔔 Son: Activé' : '🔕 Son: Muet';
+            if (soundEnabled) playChime();
+        }
+
+        function playChime() {
+            if (!soundEnabled) return;
+            try {
+                const ctx = new (window.AudioContext || window.webkitAudioContext)();
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(660, ctx.currentTime);
+                osc.frequency.setValueAtTime(880, ctx.currentTime + 0.12);
+                gain.gain.setValueAtTime(0.15, ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.35);
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                osc.start();
+                osc.stop(ctx.currentTime + 0.35);
+            } catch (e) {}
+        }
+
+        async function fetchNotifications() {
+            const res = await fetch('/api/notifications');
+            const notifs = await res.json();
+            document.getElementById('notif-count').textContent = notifs.length;
+
+            const currentIds = new Set(notifs.map(n => n.id));
+            if (!firstLoad) {
+                for (const id of currentIds) {
+                    if (!lastNotifIds.has(id)) {
+                        playChime();
+                        break;
+                    }
+                }
+            }
+            lastNotifIds = currentIds;
+
+            const container = document.getElementById('notifications-box');
+            if (notifs.length === 0) {
+                container.innerHTML = '<div class="empty-state">Aucune alerte en cours.</div>';
+                return;
+            }
+
+            container.innerHTML = '';
+            notifs.forEach(n => {
+                const card = document.createElement('div');
+                card.className = 'notif-alert';
+
+                const msgSpan = document.createElement('span');
+                msgSpan.textContent = n.message;
+
+                const btn = document.createElement('button');
+                btn.className = 'btn-dismiss';
+                btn.textContent = '✓ OK';
+                btn.onclick = () => dismissNotif(n.id);
+
+                card.appendChild(msgSpan);
+                card.appendChild(btn);
+                container.appendChild(card);
+            });
+        }
+
+        async function dismissNotif(id) {
+            await fetch(`/api/notifications/${id}/dismiss`, { method: 'PATCH' });
+            fetchNotifications();
+        }
+
+        /* --- PENDING ORDERS --- */
+        async function fetchPendingOrders() {
+            const res = await fetch('/api/orders/pending');
+            const orders = await res.json();
+            document.getElementById('pending-count').textContent = orders.length;
+
+            const currentIds = new Set(orders.map(o => o.id));
+            if (!firstLoad) {
+                for (const id of currentIds) {
+                    if (!lastOrderIds.has(id)) {
+                        playChime();
+                        break;
+                    }
+                }
+            }
+            lastOrderIds = currentIds;
+            firstLoad = false;
+
+            const container = document.getElementById('orders-list');
+            if (orders.length === 0) {
+                container.innerHTML = '<div class="empty-state">Aucune commande en attente.</div>';
+                return;
+            }
+
+            container.innerHTML = '';
+            orders.forEach(order => {
+                const card = document.createElement('div');
+                card.className = 'order-card';
+
+                const tableLabel = order.table_number === 0 ? '🛍️ À EMPORTER' : `🪑 TABLE ${order.table_number}`;
+
+                const top = document.createElement('div');
+                top.className = 'order-top';
+                top.innerHTML = `
+                    <span class="table-tag">${tableLabel}</span>
+                    <span class="order-id">Commande #${order.id}</span>
+                `;
+
+                const list = document.createElement('ul');
+                list.className = 'order-items-list';
+                order.items.split(', ').forEach(line => {
+                    const li = document.createElement('li');
+                    li.textContent = line;
+                    list.appendChild(li);
+                });
+
+                const footer = document.createElement('div');
+                footer.className = 'order-footer';
+
+                const totalEl = document.createElement('div');
+                totalEl.className = 'order-total';
+                totalEl.textContent = `${order.total_price} DA`;
+
+                const actions = document.createElement('div');
+                actions.className = 'order-actions';
+
+                const calcBtn = document.createElement('button');
+                calcBtn.className = 'btn-calc-order';
+                calcBtn.textContent = '🧮 Rendu';
+                calcBtn.onclick = () => openCalcWithTotal(order.total_price);
+
+                const approveBtn = document.createElement('button');
+                approveBtn.className = 'btn-approve';
+                approveBtn.textContent = '✅ Valider';
+                approveBtn.onclick = () => updateStatus(order.id, 'approved');
+
+                const declineBtn = document.createElement('button');
+                declineBtn.className = 'btn-decline';
+                declineBtn.textContent = '✕ Refuser';
+                declineBtn.onclick = () => updateStatus(order.id, 'declined');
+
+                actions.appendChild(calcBtn);
+                actions.appendChild(approveBtn);
+                actions.appendChild(declineBtn);
+                footer.appendChild(totalEl);
+                footer.appendChild(actions);
+
+                card.appendChild(top);
+                card.appendChild(list);
+                card.appendChild(footer);
+                container.appendChild(card);
+            });
+        }
+
+        async function updateStatus(orderId, status) {
+            await fetch(`/api/orders/${orderId}/status`, {
+                method: 'PATCH',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ status: status })
+            });
+            fetchPendingOrders();
+        }
+
+        /* --- STOCK MANAGEMENT --- */
+        function sortCategories(keys) {
+            return keys.sort((a, b) => {
+                const idxA = categoryOrder.indexOf(a);
+                const idxB = categoryOrder.indexOf(b);
+                return (idxA === -1 ? 99 : idxA) - (idxB === -1 ? 99 : idxB);
+            });
+        }
+
+        async function fetchMenuStock() {
+            const res = await fetch('/api/menu/all');
+            allStockItems = await res.json();
+
+            groupedStock = allStockItems.reduce((acc, item) => {
+                if (!acc[item.category]) acc[item.category] = [];
+                acc[item.category].push(item);
+                return acc;
+            }, {});
+
+            const categories = sortCategories(Object.keys(groupedStock));
+            if (!currentStockCategory || !groupedStock[currentStockCategory]) {
+                currentStockCategory = categories[0];
+            }
+
+            renderStockTabs(categories);
+            renderStockView();
+        }
+
+        function renderStockTabs(categories) {
+            const tabContainer = document.getElementById('stock-category-tabs');
+            tabContainer.innerHTML = '';
+            categories.forEach(cat => {
+                const isActive = (!stockSearchQuery && cat === currentStockCategory);
+                const icon = categoryIcons[cat] || '🍽️';
+                const btn = document.createElement('button');
+                btn.className = `stock-tab-btn ${isActive ? 'active' : ''}`;
+                btn.textContent = `${icon} ${cat}`;
+                btn.onclick = () => selectStockCategory(cat);
+                tabContainer.appendChild(btn);
+            });
+        }
+
+        function selectStockCategory(cat) {
+            stockSearchQuery = '';
+            document.getElementById('stock-search').value = '';
+            currentStockCategory = cat;
+            renderStockTabs(sortCategories(Object.keys(groupedStock)));
+            renderStockView();
+        }
+
+        function handleStockSearch(val) {
+            stockSearchQuery = val.trim().toLowerCase();
+            renderStockTabs(sortCategories(Object.keys(groupedStock)));
+            renderStockView();
+        }
+
+        function renderStockView() {
+            const container = document.getElementById('stock-container');
+            let items = [];
+
+            if (stockSearchQuery) {
+                items = allStockItems.filter(item =>
+                    item.name.toLowerCase().includes(stockSearchQuery) ||
+                    item.category.toLowerCase().includes(stockSearchQuery)
+                );
+            } else {
+                items = groupedStock[currentStockCategory] || [];
+            }
+
+            document.getElementById('stock-cat-count').textContent = `${items.length} article(s)`;
+            container.innerHTML = '';
+
+            if (items.length === 0) {
+                container.innerHTML = '<div class="empty-state" style="grid-column: 1 / -1;">Aucun article trouvé.</div>';
+                return;
+            }
+
+            items.forEach(item => {
+                const isAvail = item.is_available === 1;
+                const card = document.createElement('div');
+                card.className = `stock-item ${isAvail ? '' : 'sold-out'}`;
+
+                const priceLabel = item.variants ? '4 Tailles (Mini → Turk)' : `${item.price} DA`;
+                const catLabel = stockSearchQuery ? ` • ${item.category}` : '';
+
+                const info = document.createElement('div');
+                info.innerHTML = `
+                    <div class="stock-item-title">${escapeHtml(item.name)}</div>
+                    <div class="stock-item-meta">${priceLabel}${catLabel}</div>
+                    <span class="status-pill ${isAvail ? 'avail' : 'out'}">
+                        ${isAvail ? '● Disponible' : '● Épuisé'}
+                    </span>
+                `;
+
+                const toggleBtn = document.createElement('button');
+                toggleBtn.className = isAvail ? 'btn-soldout' : 'btn-stock';
+                toggleBtn.textContent = isAvail ? 'Marquer Épuisé' : 'Remettre Disponible';
+                toggleBtn.onclick = () => toggleStock(item.id, isAvail ? 0 : 1);
+
+                card.appendChild(info);
+                card.appendChild(toggleBtn);
+                container.appendChild(card);
+            });
+        }
+
+        async function toggleStock(itemId, newStatus) {
+            await fetch(`/api/menu/${itemId}/availability`, {
+                method: 'PATCH',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ is_available: newStatus })
+            });
+            fetchMenuStock();
+        }
+
+        /* --- COUNTER / TO-GO POS LOGIC --- */
+        function getPosTotal() {
+            return parseFloat(document.getElementById('pos-cart-total').textContent) || 0;
+        }
+
+        async function openPosModal() {
+            const res = await fetch('/api/menu');
+            posMenuItems = await res.json();
+            posGroupedMenu = posMenuItems.reduce((acc, item) => {
+                if (!acc[item.category]) acc[item.category] = [];
+                acc[item.category].push(item);
+                return acc;
+            }, {});
+
+            const cats = sortCategories(Object.keys(posGroupedMenu));
+            posCurrentCategory = cats[0] || null;
+            posSearchQuery = '';
+            document.getElementById('pos-search').value = '';
+            posSelectedTable = 0;
+            document.getElementById('pos-dest-select').value = '0';
+
+            renderPosTabs();
+            renderPosMenu();
+            renderPosCart();
+            document.getElementById('pos-overlay').style.display = 'flex';
+        }
+
+        function closePosModal() {
+            document.getElementById('pos-overlay').style.display = 'none';
+        }
+
+        function renderPosTabs() {
+            const tabContainer = document.getElementById('pos-tabs');
+            tabContainer.innerHTML = '';
+            sortCategories(Object.keys(posGroupedMenu)).forEach(cat => {
+                const isActive = (!posSearchQuery && cat === posCurrentCategory);
+                const icon = categoryIcons[cat] || '🍽️';
+                const btn = document.createElement('button');
+                btn.className = `stock-tab-btn ${isActive ? 'active' : ''}`;
+                btn.textContent = `${icon} ${cat}`;
+                btn.onclick = () => {
+                    posSearchQuery = '';
+                    document.getElementById('pos-search').value = '';
+                    posCurrentCategory = cat;
+                    renderPosTabs();
+                    renderPosMenu();
+                };
+                tabContainer.appendChild(btn);
+            });
+        }
+
+        function handlePosSearch(val) {
+            posSearchQuery = val.trim().toLowerCase();
+            renderPosTabs();
+            renderPosMenu();
+        }
+
+        function getPosCompatibleDishes(compatibleWith) {
+            if (!compatibleWith || compatibleWith === 'ALL') return [];
+            const allowed = compatibleWith.split(',');
+            return Object.keys(posCart).filter(k => !posCart[k].isSupplement && allowed.includes(posCart[k].category));
+        }
+
+        function renderPosMenu() {
+            const container = document.getElementById('pos-menu-list');
+            container.innerHTML = '';
+
+            const items = posSearchQuery
+                ? posMenuItems.filter(i => i.name.toLowerCase().includes(posSearchQuery) || i.category.toLowerCase().includes(posSearchQuery))
+                : (posGroupedMenu[posCurrentCategory] || []);
+
+            if (items.length === 0) {
+                container.innerHTML = '<div class="empty-state">Aucun article disponible.</div>';
+                return;
+            }
+
+            items.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'pos-item-card';
+
+                if (item.category === 'Suppléments') {
+                    const compat = item.compatible_with || 'ALL';
+                    const top = document.createElement('div');
+                    top.className = 'pos-item-top';
+                    top.innerHTML = `<div><b>${escapeHtml(item.name)}</b> <span style="color:var(--star-gold); font-weight:800;">(${item.price} DA)</span></div>`;
+
+                    if (compat === 'ALL') {
+                        const btn = document.createElement('button');
+                        btn.className = 'pos-add-btn';
+                        btn.textContent = '+ Ajouter';
+                        btn.onclick = () => addPosMainItem(item.name, item.price, item.category);
+                        top.appendChild(btn);
+                        card.appendChild(top);
+                    } else {
+                        const dishes = getPosCompatibleDishes(compat);
+                        if (dishes.length === 0) {
+                            const lock = document.createElement('span');
+                            lock.style.cssText = 'font-size:11.5px; color:#a1a1aa;';
+                            lock.textContent = compat === 'Pizzas' ? 'Ajoutez Pizza' : (compat === 'Sandwichs' ? 'Ajoutez Sandwich' : 'Ajoutez Pizza/Sandwich');
+                            top.appendChild(lock);
+                            card.appendChild(top);
+                        } else {
+                            card.appendChild(top);
+                            const wrap = document.createElement('div');
+                            wrap.style.cssText = 'display:flex; flex-wrap:wrap; gap:6px; margin-top:8px;';
+                            dishes.forEach(target => {
+                                const maxQty = posCart[target].qty;
+                                const label = `${item.name} [sur ${target}]`;
+                                const curQty = posCart[label] ? posCart[label].qty : 0;
+                                const b = document.createElement('button');
+                                if (curQty >= maxQty) {
+                                    b.style.cssText = 'background:#14532d; color:#86efac; border:1px solid #4ade80; padding:5px 8px; border-radius:6px; font-size:11.5px; font-weight:800;';
+                                    b.textContent = `✅ ${target} (${curQty}/${maxQty})`;
+                                    b.disabled = true;
+                                } else {
+                                    b.className = 'pos-add-btn';
+                                    b.style.fontSize = '11.5px';
+                                    b.textContent = `+ Sur ${target} (${curQty}/${maxQty})`;
+                                    b.onclick = () => addPosSupplement(item.name, item.price, compat, target);
+                                }
+                                wrap.appendChild(b);
+                            });
+                            card.appendChild(wrap);
+                        }
+                    }
+                    container.appendChild(card);
+                    return;
+                }
+
+                const top = document.createElement('div');
+                top.className = 'pos-item-top';
+                top.innerHTML = `<div><b>${escapeHtml(item.name)}</b> ${!item.variants ? `<span style="color:var(--star-gold); font-weight:800;">— ${item.price} DA</span>` : ''}</div>`;
+
+                if (!item.variants) {
+                    const btn = document.createElement('button');
+                    btn.className = 'pos-add-btn';
+                    btn.textContent = '+ Ajouter';
+                    btn.onclick = () => addPosMainItem(item.name, item.price, item.category);
+                    top.appendChild(btn);
+                }
+                card.appendChild(top);
+
+                if (item.variants) {
+                    const grid = document.createElement('div');
+                    grid.className = 'pos-variants';
+                    item.variants.split(',').forEach(p => {
+                        const [size, vprice] = p.split(':');
+                        const fullName = `${item.name} (${size})`;
+                        const qty = posCart[fullName] ? posCart[fullName].qty : 0;
+                        const vb = document.createElement('button');
+                        vb.className = 'pos-v-btn';
+                        vb.innerHTML = `${size}${qty > 0 ? ` (${qty})` : ''}<span>${vprice} DA</span>`;
+                        vb.onclick = () => addPosMainItem(fullName, parseFloat(vprice), item.category);
+                        grid.appendChild(vb);
+                    });
+                    card.appendChild(grid);
+                }
+
+                container.appendChild(card);
+            });
+        }
+
+        function addPosMainItem(name, price, category) {
+            if (posCart[name]) posCart[name].qty += 1;
+            else posCart[name] = { price: price, qty: 1, category: category, isSupplement: false };
+            renderPosMenu();
+            renderPosCart();
+        }
+
+        function addPosSupplement(suppName, price, compatibleWith, targetDish) {
+            const parent = posCart[targetDish];
+            if (!parent) return;
+            const label = `${suppName} [sur ${targetDish}]`;
+            const cur = posCart[label] ? posCart[label].qty : 0;
+            if (cur >= parent.qty) return;
+
+            if (posCart[label]) posCart[label].qty += 1;
+            else posCart[label] = { price: price, qty: 1, category: 'Suppléments', isSupplement: true, targetDish: targetDish };
+            renderPosMenu();
+            renderPosCart();
+        }
+
+        function removePosItem(name) {
+            if (posCart[name].qty > 1) posCart[name].qty -= 1;
+            else delete posCart[name];
+
+            Object.keys(posCart).forEach(k => {
+                const entry = posCart[k];
+                if (entry.isSupplement && entry.targetDish) {
+                    const parent = posCart[entry.targetDish];
+                    if (!parent) delete posCart[k];
+                    else if (entry.qty > parent.qty) entry.qty = parent.qty;
+                }
+            });
+
+            renderPosMenu();
+            renderPosCart();
+        }
+
+        function renderPosCart() {
+            const container = document.getElementById('pos-cart-items');
+            const keys = Object.keys(posCart);
+            let total = 0;
+            let count = 0;
+
+            if (keys.length === 0) {
+                container.innerHTML = '<div class="empty-state">Sélectionnez des articles à gauche.</div>';
+                document.getElementById('pos-cart-total').textContent = '0';
+                document.getElementById('pos-cart-count').textContent = '0';
+                return;
+            }
+
+            container.innerHTML = '';
+            keys.forEach(name => {
+                const lineTotal = posCart[name].price * posCart[name].qty;
+                total += lineTotal;
+                count += posCart[name].qty;
+
+                const row = document.createElement('div');
+                row.className = 'pos-cart-row';
+                row.innerHTML = `<span><b>${posCart[name].qty}x</b> ${escapeHtml(name)}</span>`;
+
+                const right = document.createElement('div');
+                right.style.cssText = 'display:flex; align-items:center; gap:8px; white-space:nowrap; color:var(--star-gold); font-weight:800;';
+                right.innerHTML = `<span>${lineTotal} DA</span>`;
+
+                const del = document.createElement('button');
+                del.className = 'pos-del-btn';
+                del.textContent = '✕';
+                del.onclick = () => removePosItem(name);
+
+                right.appendChild(del);
+                row.appendChild(right);
+                container.appendChild(row);
+            });
+
+            document.getElementById('pos-cart-total').textContent = total;
+            document.getElementById('pos-cart-count').textContent = count;
+            document.getElementById('calc-order-total').value = total;
+            updateChangeDisplay();
+        }
+
+        async function submitPosOrder() {
+            const keys = Object.keys(posCart);
+            if (keys.length === 0) return alert("Veuillez ajouter des articles d'abord !");
+
+            const itemsSummary = keys.map(k => `${posCart[k].qty}x ${k}`).join(', ');
+            const totalPrice = getPosTotal();
+
+            const res = await fetch('/api/orders', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    table_number: posSelectedTable,
+                    items: itemsSummary,
+                    total_price: totalPrice
+                })
+            });
+            const data = await res.json();
+
+            await fetch(`/api/orders/${data.order_id}/status`, {
+                method: 'PATCH',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ status: 'approved' })
+            });
+
+            const destLabel = posSelectedTable === 0 ? 'À Emporter (Comptoir)' : `Table ${posSelectedTable}`;
+            posCart = {};
+            renderPosCart();
+            closePosModal();
+            showPosToast(`✅ Commande #${data.order_id} (${destLabel}) envoyée en cuisine !`);
+        }
+
+        setInterval(() => {
+            fetchNotifications();
+            fetchPendingOrders();
+        }, 2500);
+
+        fetchNotifications();
+        fetchPendingOrders();
+        fetchMenuStock();
+    </script>
+</body>
+</html>

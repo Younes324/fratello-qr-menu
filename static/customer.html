@@ -1,0 +1,1912 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>Pizzeria Fratello Beşiktaş — Menu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bjk-black: #120f0f;
+            --bjk-dark: #1d1818;
+            --turkish-red: #c8102e;
+            --turkish-red-dark: #8f091f;
+            --star-gold: #ffcc00;
+            --card-bg: rgba(28, 23, 23, 0.88);
+            --text-main: #fafafa;
+            --text-muted: #d4d4d8;
+            --border-warm: rgba(255, 204, 0, 0.24);
+            --success-green: #16a34a;
+        }
+
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            margin: 0 auto;
+            padding: 0 0 95px 0;
+            max-width: 520px;
+            background-color: #161111;
+            color: var(--text-main);
+            position: relative;
+            min-height: 100vh;
+        }
+
+        /* --- FIXED PIZZERIA KITCHEN & PIZZA ILLUSTRATED BACKGROUND --- */
+        .pizzeria-wallpaper {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+            background:
+                radial-gradient(circle at 50% 18%, rgba(200, 16, 46, 0.22) 0%, transparent 55%),
+                radial-gradient(circle at 20% 75%, rgba(255, 165, 0, 0.14) 0%, transparent 50%),
+                #161111;
+            overflow: hidden;
+        }
+        .pizzeria-wallpaper svg {
+            width: 100%;
+            height: 100%;
+            opacity: 0.34;
+        }
+
+        /* --- HERO HEADER WITH CARTOON TURKISH CHEF --- */
+        .hero {
+            background: linear-gradient(145deg, rgba(18, 15, 15, 0.96) 0%, rgba(45, 14, 18, 0.95) 60%, rgba(143, 9, 31, 0.95) 100%);
+            color: white;
+            padding: 16px 16px 18px 16px;
+            border-bottom: 3px solid var(--star-gold);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+        }
+        .hero-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+        }
+        .hero-brand { flex: 1; min-width: 0; }
+        .stars-row {
+            color: var(--star-gold);
+            font-size: 12px;
+            letter-spacing: 3px;
+            margin-bottom: 4px;
+        }
+        .brand-badge {
+            display: inline-block;
+            background: var(--turkish-red);
+            color: white;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 1.4px;
+            text-transform: uppercase;
+            padding: 3px 8px;
+            border-radius: 4px;
+            margin-bottom: 6px;
+            border: 1px solid rgba(255, 204, 0, 0.4);
+        }
+        .hero h1 {
+            font-family: 'Oswald', sans-serif;
+            margin: 0;
+            font-size: 27px;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+            line-height: 1.08;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+        }
+        .hero h1 span { color: var(--star-gold); }
+        .hero-tagline {
+            margin: 5px 0 0 0;
+            font-size: 12.5px;
+            color: #e4e4e7;
+            font-style: italic;
+        }
+
+        .chef-mascot {
+            width: 108px;
+            height: 108px;
+            flex-shrink: 0;
+            filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.55));
+            animation: chefFloat 3.5s ease-in-out infinite;
+        }
+        @keyframes chefFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-4px) rotate(1.5deg); }
+        }
+
+        .hero-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+            margin-top: 12px;
+            padding-top: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
+            flex-wrap: wrap;
+        }
+        .table-pill {
+            background: rgba(0, 0, 0, 0.45);
+            border: 1px solid rgba(255, 204, 0, 0.55);
+            color: var(--star-gold);
+            padding: 7px 11px;
+            border-radius: 8px;
+            font-weight: 800;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .btn-reviews-hero {
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 204, 0, 0.55);
+            color: white;
+            padding: 7px 11px;
+            border-radius: 8px;
+            font-weight: 800;
+            font-size: 12.5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .btn-waiter {
+            background: var(--star-gold);
+            color: #120f0f;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-weight: 800;
+            font-size: 12.5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            box-shadow: 0 3px 12px rgba(255, 204, 0, 0.35);
+            transition: transform 0.15s ease;
+        }
+        .btn-waiter:active { transform: scale(0.96); }
+        .btn-waiter.called { background: var(--success-green); color: white; }
+
+        /* --- STICKY NAVIGATION & SEARCH --- */
+        .sticky-nav {
+            position: sticky;
+            top: 0;
+            z-index: 90;
+            background: rgba(18, 14, 14, 0.94);
+            backdrop-filter: blur(10px);
+            padding: 10px 12px;
+            border-bottom: 1px solid rgba(255, 204, 0, 0.25);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.45);
+        }
+        .search-row {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+        .search-wrap {
+            position: relative;
+            flex: 1;
+        }
+        .search-input {
+            width: 100%;
+            background: rgba(38, 31, 31, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            color: white;
+            padding: 9px 32px 9px 11px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-family: inherit;
+            outline: none;
+        }
+        .search-input::placeholder { color: #a1a1aa; }
+        .search-input:focus { border-color: var(--star-gold); }
+        .search-clear {
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #3f3f46;
+            color: white;
+            border: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            font-size: 11px;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .btn-top-rated {
+            background: rgba(38, 31, 31, 0.95);
+            border: 1px solid rgba(255, 204, 0, 0.4);
+            color: var(--star-gold);
+            padding: 0 11px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 800;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        .btn-top-rated.active {
+            background: var(--star-gold);
+            color: #120f0f;
+        }
+
+        .category-bar {
+            display: flex;
+            overflow-x: auto;
+            gap: 8px;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            padding-bottom: 2px;
+        }
+        .category-bar::-webkit-scrollbar { display: none; }
+        .cat-btn {
+            background: rgba(38, 31, 31, 0.95);
+            color: #e4e4e7;
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            padding: 7px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            white-space: nowrap;
+            flex-shrink: 0;
+            transition: all 0.2s ease;
+        }
+        .cat-btn.active {
+            background: var(--turkish-red);
+            color: white;
+            border-color: var(--star-gold);
+            box-shadow: 0 2px 10px rgba(200, 16, 46, 0.55);
+        }
+
+        /* --- MENU CONTAINER & TRANSLUCENT WARM CARDS --- */
+        .content-wrap { padding: 14px 12px 0 12px; }
+
+        .section-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 4px 0 12px 0;
+            padding: 6px 10px;
+            background: rgba(18, 14, 14, 0.75);
+            border-radius: 8px;
+            border-left: 4px solid var(--star-gold);
+            backdrop-filter: blur(4px);
+        }
+        .section-heading h3 {
+            font-family: 'Oswald', sans-serif;
+            margin: 0;
+            font-size: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            color: #ffffff;
+        }
+        .section-count {
+            font-size: 12px;
+            font-weight: 800;
+            color: var(--star-gold);
+            background: rgba(200, 16, 46, 0.35);
+            border: 1px solid rgba(255, 204, 0, 0.35);
+            padding: 3px 9px;
+            border-radius: 12px;
+        }
+
+        .supp-hint {
+            background: rgba(66, 32, 6, 0.9);
+            color: #fde047;
+            border: 1px solid rgba(250, 204, 21, 0.45);
+            padding: 10px 12px;
+            font-size: 12.5px;
+            border-radius: 10px;
+            margin-bottom: 12px;
+            font-weight: 600;
+            line-height: 1.4;
+            backdrop-filter: blur(6px);
+        }
+
+        .item-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(8px);
+            border: 1px solid var(--border-warm);
+            border-radius: 14px;
+            padding: 14px;
+            margin-bottom: 12px;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+            transition: border-color 0.2s ease, transform 0.15s ease;
+        }
+        .item-card.in-cart {
+            border: 1.5px solid var(--star-gold);
+            box-shadow: 0 4px 16px rgba(255, 204, 0, 0.22);
+        }
+
+        .item-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        .item-title-row {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        .item-name {
+            font-size: 16.5px;
+            font-weight: 800;
+            color: #ffffff;
+        }
+        .cat-tag {
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            background: rgba(255, 255, 255, 0.12);
+            color: #e4e4e7;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+        .top-rated-badge {
+            font-size: 10.5px;
+            font-weight: 800;
+            background: linear-gradient(90deg, #f59e0b, #fbbf24);
+            color: #120f0f;
+            padding: 2px 7px;
+            border-radius: 10px;
+        }
+        .in-cart-pill {
+            font-size: 11px;
+            font-weight: 800;
+            background: var(--turkish-red);
+            color: var(--star-gold);
+            border: 1px solid var(--star-gold);
+            padding: 2px 8px;
+            border-radius: 10px;
+        }
+        .item-price {
+            font-size: 15.5px;
+            font-weight: 800;
+            color: var(--star-gold);
+            margin-top: 4px;
+        }
+
+        /* Item Meta Action Row (Ingredients + Rating Pill) */
+        .item-meta-bar {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 8px;
+        }
+        .btn-info, .btn-rate-item {
+            background: rgba(255, 255, 255, 0.1);
+            color: #e4e4e7;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            padding: 5px 9px;
+            font-size: 11.5px;
+            font-weight: 700;
+            border-radius: 6px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .btn-rate-item.has-score {
+            background: rgba(255, 204, 0, 0.14);
+            border-color: rgba(255, 204, 0, 0.45);
+            color: var(--star-gold);
+        }
+
+        .ingredients-text {
+            display: none;
+            font-size: 12.5px;
+            color: #f4f4f5;
+            margin-top: 8px;
+            background: rgba(0, 0, 0, 0.45);
+            padding: 8px 10px;
+            border-radius: 8px;
+            border-left: 3px solid var(--star-gold);
+            line-height: 1.45;
+        }
+        .ingredients-text.open { display: block; }
+
+        /* Action Buttons */
+        .btn-add {
+            background: var(--star-gold);
+            color: #120f0f;
+            border: none;
+            padding: 9px 14px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 800;
+            cursor: pointer;
+            white-space: nowrap;
+            box-shadow: 0 2px 8px rgba(255, 204, 0, 0.25);
+            transition: transform 0.12s ease, background 0.15s ease;
+        }
+        .btn-add:active { transform: scale(0.95); background: var(--turkish-red); color: white; }
+
+        /* 4-Column Pizza Size Grid */
+        .variants-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 6px;
+            margin-top: 12px;
+            padding-top: 10px;
+            border-top: 1px dashed rgba(255, 255, 255, 0.18);
+        }
+        .variant-btn {
+            background: rgba(45, 36, 36, 0.95);
+            border: 1.5px solid rgba(255, 204, 0, 0.35);
+            border-radius: 8px;
+            padding: 8px 4px;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.15s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+        }
+        .variant-btn:active {
+            transform: scale(0.95);
+            background: var(--turkish-red);
+            border-color: var(--star-gold);
+        }
+        .variant-btn.has-qty {
+            background: rgba(200, 16, 46, 0.35);
+            border-color: var(--star-gold);
+        }
+        .v-size {
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: #ffffff;
+        }
+        .v-price {
+            font-size: 12px;
+            font-weight: 800;
+            color: var(--star-gold);
+        }
+
+        /* Supplements */
+        .compat-badge {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 6px;
+            margin-top: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #e4e4e7;
+        }
+        .target-list {
+            margin-top: 10px;
+            padding-top: 8px;
+            border-top: 1px dashed rgba(255, 255, 255, 0.18);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        .btn-add-target {
+            background: var(--star-gold);
+            color: #120f0f;
+            padding: 7px 10px;
+            font-size: 12px;
+            font-weight: 800;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-added-done {
+            background: rgba(22, 163, 74, 0.25);
+            color: #86efac;
+            border: 1px solid #4ade80;
+            padding: 7px 10px;
+            font-size: 12px;
+            font-weight: 800;
+            border-radius: 6px;
+            cursor: default;
+        }
+        .btn-disabled {
+            background: rgba(255, 255, 255, 0.06);
+            color: #71717a;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: not-allowed;
+            font-size: 11.5px;
+            font-weight: 700;
+            padding: 8px 10px;
+            border-radius: 8px;
+        }
+
+        /* --- CART & CHECKOUT BOX --- */
+        .cart-box {
+            background: rgba(24, 19, 19, 0.94);
+            backdrop-filter: blur(10px);
+            border: 2px solid var(--star-gold);
+            border-top: 5px solid var(--turkish-red);
+            padding: 16px;
+            border-radius: 14px;
+            margin-top: 22px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+        }
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+        }
+        .cart-header h3 {
+            font-family: 'Oswald', sans-serif;
+            margin: 0;
+            font-size: 20px;
+            text-transform: uppercase;
+            color: #ffffff;
+        }
+        .cart-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            gap: 8px;
+        }
+        .cart-row:last-child { border-bottom: none; }
+        .cart-item-info { font-size: 13.5px; line-height: 1.35; color: #f4f4f5; }
+        .cart-item-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+            font-weight: 800;
+            font-size: 13.5px;
+            color: var(--star-gold);
+        }
+        .btn-remove {
+            background: rgba(200, 16, 46, 0.25);
+            color: #fca5a5;
+            border: 1px solid rgba(200, 16, 46, 0.5);
+            font-weight: 800;
+            border-radius: 6px;
+            width: 26px;
+            height: 26px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .cart-total-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1.5px solid rgba(255, 204, 0, 0.35);
+            font-size: 18px;
+            font-weight: 800;
+        }
+        .cart-total-row span:last-child { color: var(--star-gold); }
+        .btn-order {
+            background: var(--turkish-red);
+            color: white;
+            border: 1px solid var(--star-gold);
+            width: 100%;
+            padding: 14px;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-top: 14px;
+            cursor: pointer;
+            box-shadow: 0 4px 14px rgba(200, 16, 46, 0.45);
+        }
+        .btn-order:active { transform: scale(0.98); }
+
+        /* --- LIVE ORDER STATUS TRACKER --- */
+        .status-card {
+            margin-top: 16px;
+            background: rgba(24, 19, 19, 0.95);
+            border: 2px solid var(--star-gold);
+            border-radius: 14px;
+            padding: 16px;
+            display: none;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+        }
+        .progress-steps {
+            display: flex;
+            justify-content: space-between;
+            margin: 12px 0;
+            gap: 6px;
+        }
+        .step {
+            flex: 1;
+            text-align: center;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 6px 4px;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.08);
+            color: #a1a1aa;
+        }
+        .step.active { background: var(--star-gold); color: #120f0f; }
+        .step.done { background: rgba(22, 163, 74, 0.3); color: #86efac; border: 1px solid #4ade80; }
+        .btn-cancel-order {
+            background: rgba(200, 16, 46, 0.25);
+            color: #fca5a5;
+            border: 1px solid rgba(200, 16, 46, 0.6);
+            padding: 10px;
+            margin-top: 10px;
+            width: 100%;
+            border-radius: 8px;
+            font-weight: 800;
+            font-size: 13px;
+            cursor: pointer;
+        }
+        .btn-review-order {
+            background: var(--star-gold);
+            color: #120f0f;
+            border: none;
+            padding: 12px;
+            margin-top: 10px;
+            width: 100%;
+            border-radius: 9px;
+            font-weight: 800;
+            font-size: 14px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(255, 204, 0, 0.35);
+        }
+
+        /* --- SMART REVIEW MODAL --- */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(6px);
+            z-index: 2500;
+            display: none;
+            justify-content: center;
+            align-items: flex-end;
+        }
+        @media (min-width: 540px) {
+            .modal-overlay { align-items: center; padding: 14px; }
+        }
+        .modal-sheet {
+            background: #1a1515;
+            border: 2px solid var(--star-gold);
+            border-top: 5px solid var(--turkish-red);
+            border-radius: 18px 18px 0 0;
+            width: 100%;
+            max-width: 500px;
+            max-height: 88vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        @media (min-width: 540px) {
+            .modal-sheet { border-radius: 16px; }
+        }
+        .modal-head {
+            background: #120f0f;
+            padding: 14px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 204, 0, 0.25);
+        }
+        .modal-head h3 {
+            font-family: 'Oswald', sans-serif;
+            margin: 0;
+            font-size: 19px;
+            text-transform: uppercase;
+            color: white;
+        }
+        .modal-head h3 span { color: var(--star-gold); }
+        .btn-modal-close {
+            background: rgba(255, 255, 255, 0.12);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 6px 11px;
+            font-weight: 800;
+            cursor: pointer;
+        }
+        .modal-body {
+            padding: 14px 16px;
+            overflow-y: auto;
+            flex: 1;
+        }
+        .review-target-block {
+            background: #241e1e;
+            border: 1px solid rgba(255, 204, 0, 0.22);
+            border-radius: 12px;
+            padding: 12px;
+            margin-bottom: 12px;
+        }
+        .review-target-title {
+            font-weight: 800;
+            font-size: 15px;
+            color: white;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .star-picker {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 8px;
+        }
+        .star-btn {
+            background: #141111;
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            color: #71717a;
+            font-size: 20px;
+            width: 40px;
+            height: 38px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.1s ease;
+        }
+        .star-btn.lit {
+            color: var(--star-gold);
+            border-color: var(--star-gold);
+            background: rgba(255, 204, 0, 0.12);
+        }
+        .quick-tags-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 8px;
+        }
+        .q-tag {
+            background: #141111;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            color: #d4d4d8;
+            font-size: 11.5px;
+            font-weight: 700;
+            padding: 5px 9px;
+            border-radius: 16px;
+            cursor: pointer;
+        }
+        .q-tag.selected {
+            background: var(--turkish-red);
+            border-color: var(--star-gold);
+            color: white;
+        }
+        .review-input {
+            width: 100%;
+            background: #141111;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            color: white;
+            border-radius: 8px;
+            padding: 8px 10px;
+            font-size: 12.5px;
+            font-family: inherit;
+            outline: none;
+        }
+        .review-input:focus { border-color: var(--star-gold); }
+        .past-review-card {
+            background: #141111;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 10px 12px;
+            margin-bottom: 8px;
+        }
+        .verified-chip {
+            font-size: 10px;
+            font-weight: 800;
+            background: rgba(22, 163, 74, 0.22);
+            color: #86efac;
+            border: 1px solid rgba(74, 222, 128, 0.4);
+            padding: 2px 6px;
+            border-radius: 6px;
+        }
+
+        /* --- FLOATING CART BAR --- */
+        .floating-cart {
+            position: fixed;
+            bottom: 14px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 24px);
+            max-width: 496px;
+            background: #120f0f;
+            color: white;
+            border: 2px solid var(--star-gold);
+            border-radius: 14px;
+            padding: 12px 16px;
+            display: none;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 8px 26px rgba(0, 0, 0, 0.65);
+            z-index: 1000;
+            cursor: pointer;
+            transition: transform 0.18s ease, background-color 0.18s ease;
+        }
+        .floating-cart.pulse {
+            transform: translateX(-50%) scale(1.03);
+            background: #241b1b;
+        }
+        .floating-left { display: flex; align-items: center; gap: 10px; }
+        .floating-badge {
+            background: var(--turkish-red);
+            color: var(--star-gold);
+            border: 1px solid var(--star-gold);
+            font-weight: 800;
+            font-size: 13px;
+            padding: 5px 10px;
+            border-radius: 20px;
+        }
+        .floating-text { font-size: 15px; font-weight: 800; }
+        .floating-sub { font-size: 11.5px; color: var(--star-gold); display: block; margin-top: 1px; }
+        .floating-cta {
+            background: var(--star-gold);
+            color: #120f0f;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 12.5px;
+            font-weight: 800;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="pizzeria-wallpaper" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <pattern id="fratello-kitchen-bg" width="240" height="240" patternUnits="userSpaceOnUse">
+                    <g transform="translate(18, 18)">
+                        <path d="M10 68 L10 38 C10 14, 78 14, 78 38 L78 68 Z" fill="#8f2d1e" stroke="#ffcc00" stroke-width="2"/>
+                        <rect x="4" y="66" width="80" height="10" rx="3" fill="#b45309" stroke="#ffcc00" stroke-width="1.5"/>
+                        <line x1="16" y1="32" x2="72" y2="32" stroke="#451a03" stroke-width="2"/>
+                        <line x1="11" y1="48" x2="77" y2="48" stroke="#451a03" stroke-width="2"/>
+                        <path d="M27 66 L27 46 C27 32, 61 32, 61 46 L61 66 Z" fill="#1c0a00" stroke="#fbbf24" stroke-width="2"/>
+                        <path d="M36 65 C34 55, 42 50, 44 43 C48 50, 54 54, 51 65 Z" fill="#f97316"/>
+                        <path d="M40 65 C39 58, 43 55, 44 51 C46 55, 49 58, 47 65 Z" fill="#fde047"/>
+                        <rect x="36" y="4" width="16" height="16" fill="#9a3412" stroke="#ffcc00" stroke-width="1.5"/>
+                    </g>
+                    <g transform="translate(142, 22)">
+                        <circle cx="40" cy="40" r="36" fill="#d97706" stroke="#fde047" stroke-width="2.5"/>
+                        <circle cx="40" cy="40" r="30" fill="#dc2626"/>
+                        <circle cx="40" cy="40" r="27" fill="#facc15"/>
+                        <line x1="40" y1="10" x2="40" y2="70" stroke="#b45309" stroke-width="1.5"/>
+                        <line x1="10" y1="40" x2="70" y2="40" stroke="#b45309" stroke-width="1.5"/>
+                        <line x1="19" y1="19" x2="61" y2="61" stroke="#b45309" stroke-width="1.5"/>
+                        <line x1="61" y1="19" x2="19" y2="61" stroke="#b45309" stroke-width="1.5"/>
+                        <circle cx="29" cy="26" r="4.5" fill="#b91c1c"/>
+                        <circle cx="52" cy="27" r="4.5" fill="#b91c1c"/>
+                        <circle cx="27" cy="52" r="4.5" fill="#b91c1c"/>
+                        <circle cx="51" cy="51" r="4.5" fill="#b91c1c"/>
+                        <circle cx="40" cy="23" r="2.8" fill="#18181b"/>
+                        <circle cx="55" cy="40" r="2.8" fill="#18181b"/>
+                        <circle cx="25" cy="40" r="2.8" fill="#18181b"/>
+                        <circle cx="40" cy="56" r="2.8" fill="#18181b"/>
+                    </g>
+                    <g transform="translate(95, 108) rotate(-25)">
+                        <rect x="0" y="8" width="54" height="12" rx="4" fill="#d97706" stroke="#fde047" stroke-width="1.5"/>
+                        <rect x="-10" y="11" width="10" height="6" rx="2" fill="#92400e"/>
+                        <rect x="54" y="11" width="10" height="6" rx="2" fill="#92400e"/>
+                    </g>
+                    <g transform="translate(26, 136) rotate(12)">
+                        <path d="M8 10 Q38 0 68 10 L38 74 Z" fill="#facc15" stroke="#fde047" stroke-width="2"/>
+                        <path d="M6 10 Q38 -2 70 10 L66 18 Q38 8 10 18 Z" fill="#d97706"/>
+                        <circle cx="32" cy="28" r="5" fill="#dc2626"/>
+                        <circle cx="46" cy="34" r="4.5" fill="#dc2626"/>
+                        <circle cx="38" cy="48" r="4" fill="#dc2626"/>
+                        <circle cx="26" cy="39" r="2.5" fill="#18181b"/>
+                        <circle cx="43" cy="22" r="2.5" fill="#18181b"/>
+                    </g>
+                    <g transform="translate(145, 138)">
+                        <path d="M22 44 L22 32 C12 30, 10 16, 22 14 C25 4, 47 4, 50 14 C62 16, 60 30, 50 32 L50 44 Z" fill="#f4f4f5" stroke="#ffcc00" stroke-width="2"/>
+                        <rect x="22" y="38" width="28" height="7" fill="#c8102e"/>
+                        <path d="M12 64 C20 54, 34 56, 36 66 C26 70, 16 68, 12 64 Z" fill="#16a34a" stroke="#86efac" stroke-width="1"/>
+                        <path d="M64 60 C54 52, 42 56, 42 66 C52 68, 60 66, 64 60 Z" fill="#15803d" stroke="#86efac" stroke-width="1"/>
+                    </g>
+                    <text x="112" y="34" fill="#ffcc00" font-size="14">★</text>
+                    <text x="16" y="118" fill="#ffcc00" font-size="12">★</text>
+                    <text x="215" y="122" fill="#ffcc00" font-size="13">★</text>
+                </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#fratello-kitchen-bg)"/>
+        </svg>
+    </div>
+
+    <header class="hero">
+        <div class="hero-top">
+            <div class="hero-brand">
+                <div class="stars-row">★ ★ ★</div>
+                <div class="brand-badge">Pizzeria &amp; Street Food</div>
+                <h1>FRATELLO <span>BEŞİKTAŞ</span></h1>
+                <p class="hero-tagline">Le goût de la vraie pizza</p>
+            </div>
+
+            <div class="chef-mascot" aria-hidden="true">
+                <svg viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="72" cy="70" r="56" fill="rgba(255, 204, 0, 0.14)" stroke="rgba(255, 204, 0, 0.35)" stroke-width="1.5" stroke-dasharray="4 3"/>
+                    <path d="M44 46 L44 33 C30 31, 28 14, 44 12 C48 2, 84 2, 88 12 C104 14, 102 31, 88 33 L88 46 Z" fill="#ffffff" stroke="#18181b" stroke-width="2.5"/>
+                    <rect x="44" y="38" width="44" height="9" rx="2" fill="#c8102e" stroke="#18181b" stroke-width="2"/>
+                    <circle cx="64" cy="42.5" r="3" fill="#ffffff"/>
+                    <circle cx="65.3" cy="42.5" r="2.3" fill="#c8102e"/>
+                    <polygon points="69,41 69.7,42.3 71.2,42.3 70,43.2 70.4,44.6 69,43.8 67.6,44.6 68,43.2 66.8,42.3 68.3,42.3" fill="#ffffff"/>
+                    <circle cx="43" cy="63" r="5.5" fill="#f5c29b" stroke="#18181b" stroke-width="2"/>
+                    <circle cx="89" cy="63" r="5.5" fill="#f5c29b" stroke="#18181b" stroke-width="2"/>
+                    <path d="M45 47 L87 47 L85 72 C85 84, 47 84, 47 72 Z" fill="#fbd0ae" stroke="#18181b" stroke-width="2.5"/>
+                    <path d="M53 56 Q58 52 62 56" fill="none" stroke="#18181b" stroke-width="2.5" stroke-linecap="round"/>
+                    <path d="M70 56 Q74 52 79 56" fill="none" stroke="#18181b" stroke-width="2.5" stroke-linecap="round"/>
+                    <circle cx="58" cy="61" r="2.8" fill="#18181b"/>
+                    <circle cx="74" cy="61" r="2.8" fill="#18181b"/>
+                    <circle cx="59" cy="60" r="0.9" fill="#ffffff"/>
+                    <circle cx="75" cy="60" r="0.9" fill="#ffffff"/>
+                    <circle cx="51" cy="67" r="3.5" fill="#f87171" opacity="0.6"/>
+                    <circle cx="81" cy="67" r="3.5" fill="#f87171" opacity="0.6"/>
+                    <path d="M66 60 Q69 65 65 67" fill="none" stroke="#18181b" stroke-width="2.2" stroke-linecap="round"/>
+                    <path d="M66 70 C60 66, 48 68, 45 63 C44 71, 56 75, 66 72 C76 75, 88 71, 87 63 C84 68, 72 66, 66 70 Z" fill="#27272a" stroke="#18181b" stroke-width="1.5"/>
+                    <path d="M59 75 Q66 81 73 75" fill="#ffffff" stroke="#18181b" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M36 126 C36 96, 46 86, 66 86 C86 86, 96 96, 96 126 Z" fill="#ffffff" stroke="#18181b" stroke-width="2.5"/>
+                    <path d="M51 85 L66 96 L81 85 L76 81 L66 89 L56 81 Z" fill="#18181b"/>
+                    <path d="M62 94 L58 106 L65 106 L66 96 Z" fill="#18181b"/>
+                    <path d="M70 94 L74 106 L67 106 L66 96 Z" fill="#c8102e"/>
+                    <circle cx="66" cy="112" r="2.2" fill="#ffcc00" stroke="#18181b" stroke-width="1"/>
+                    <circle cx="66" cy="120" r="2.2" fill="#ffcc00" stroke="#18181b" stroke-width="1"/>
+                    <line x1="8" y1="112" x2="48" y2="104" stroke="#92400e" stroke-width="5" stroke-linecap="round"/>
+                    <ellipse cx="42" cy="103" rx="28" ry="10" fill="#d97706" stroke="#18181b" stroke-width="2"/>
+                    <ellipse cx="42" cy="101" rx="23" ry="7.5" fill="#facc15" stroke="#dc2626" stroke-width="1.8"/>
+                    <circle cx="34" cy="100" r="2.5" fill="#dc2626"/>
+                    <circle cx="45" cy="102" r="2.5" fill="#dc2626"/>
+                    <circle cx="52" cy="99" r="2" fill="#18181b"/>
+                    <circle cx="38" cy="103" r="1.8" fill="#16a34a"/>
+                    <path d="M32 89 Q29 83 33 78" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" opacity="0.85"/>
+                    <path d="M44 87 Q41 81 45 76" fill="none" stroke="#ffcc00" stroke-width="1.8" stroke-linecap="round" opacity="0.9"/>
+                    <path d="M54 90 Q51 84 55 79" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" opacity="0.85"/>
+                </svg>
+            </div>
+        </div>
+
+        <div class="hero-actions">
+            <div class="table-pill">🪑 Table <span id="table-num">1</span></div>
+            <button id="hero-reviews-btn" class="btn-reviews-hero" onclick="openGlobalReviewModal()">⭐ Avis Clients</button>
+            <button id="waiter-btn" class="btn-waiter" onclick="callWaiter()">🛎️ Serveur</button>
+        </div>
+    </header>
+
+    <nav class="sticky-nav">
+        <div class="search-row">
+            <div class="search-wrap">
+                <input id="menu-search" class="search-input" type="text" placeholder="🔍 Plat ou ingrédient..." oninput="handleSearch(this.value)">
+                <button id="search-clear" class="search-clear" onclick="clearSearch()">✕</button>
+            </div>
+            <button id="top-rated-btn" class="btn-top-rated" onclick="toggleTopRatedFilter()">⭐ Mieux notés</button>
+        </div>
+        <div id="category-tabs" class="category-bar"></div>
+    </nav>
+
+    <main class="content-wrap">
+        <div id="menu-container"><p style="text-align:center; color:#d4d4d8;">Chargement du menu...</p></div>
+
+        <section id="cart-section" class="cart-box">
+            <div class="cart-header">
+                <h3>🛒 Votre Commande</h3>
+                <span class="section-count"><span id="cart-count">0</span> article(s)</span>
+            </div>
+            <div id="cart-items"><p style="color:#a1a1aa; font-size:13.5px; margin:6px 0;">Votre panier est vide. Sélectionnez un plat ci-dessus.</p></div>
+            <div class="cart-total-row">
+                <span>Total à payer</span>
+                <span><span id="cart-total">0</span> DA</span>
+            </div>
+            <button class="btn-order" onclick="submitGroupedOrder()">Valider la commande</button>
+        </section>
+
+        <div id="status-box" class="status-card"></div>
+    </main>
+
+    <!-- SMART REVIEW MODAL -->
+    <div id="review-modal" class="modal-overlay" onclick="if(event.target===this) closeReviewModal()">
+        <div class="modal-sheet">
+            <div class="modal-head">
+                <h3 id="review-modal-title">⭐ Avis <span>Fratello Beşiktaş</span></h3>
+                <button class="btn-modal-close" onclick="closeReviewModal()">✕ Fermer</button>
+            </div>
+            <div id="review-modal-body" class="modal-body"></div>
+        </div>
+    </div>
+
+    <div id="floating-cart" class="floating-cart" onclick="scrollToCart()">
+        <div class="floating-left">
+            <span class="floating-badge">🛒 <span id="float-count">0</span></span>
+            <div>
+                <span class="floating-text"><span id="float-total">0</span> DA</span>
+                <span id="float-feedback" class="floating-sub">Appuyez pour voir le panier</span>
+            </div>
+        </div>
+        <span class="floating-cta">PANIER ↓</span>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const tableNum = parseInt(urlParams.get('table')) || 1;
+        document.getElementById('table-num').innerText = tableNum;
+
+        let cart = {};
+        let statusTimer = null;
+        let allMenuItems = [];
+        let groupedMenu = {};
+        let currentCategory = null;
+        let searchQuery = '';
+        let filterTopRated = false;
+        let isCartInView = false;
+        let feedbackTimeout = null;
+
+        /* Order & Review State */
+        let lastSubmittedOrder = null;
+        let reviewedOrderIds = new Set();
+        let reviewsData = { overall: { avg: 0, count: 0 }, items: {}, recent: [] };
+        let activeDrafts = [];
+        let activeOrderIdForReview = null;
+
+        const categoryOrder = ["Pizzas", "Sandwichs", "Tacos", "Burgers", "Bowls", "Calzon", "Salades", "Suppléments"];
+        const categoryIcons = {
+            "Pizzas": "🍕",
+            "Sandwichs": "🥖",
+            "Tacos": "🌮",
+            "Burgers": "🍔",
+            "Bowls": "🥗",
+            "Calzon": "🥟",
+            "Salades": "🥬",
+            "Suppléments": "➕"
+        };
+
+        const positiveTags = ["🔥 Bien chaude", "😋 Délicieuse", "🧀 Généreuse", "⚡ Service rapide", "👌 Au top"];
+        const negativeTags = ["❄️ Arrivée tiède", "⏱️ Attente longue", "🧂 Trop salé", "📦 Portion petite", "😕 Déçu"];
+
+        function escapeHtml(str) {
+            return String(str || '')
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;');
+        }
+
+        fetch(`/api/tables/seated/${tableNum}`, { method: 'POST' });
+
+        const observer = new IntersectionObserver((entries) => {
+            isCartInView = entries[0].isIntersecting;
+            updateFloatingVisibility();
+        }, { threshold: 0.15 });
+        observer.observe(document.getElementById('cart-section'));
+
+        function scrollToCart() {
+            document.getElementById('cart-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function updateFloatingVisibility() {
+            const floatBar = document.getElementById('floating-cart');
+            const count = parseInt(document.getElementById('float-count').innerText) || 0;
+            floatBar.style.display = (count > 0 && !isCartInView) ? 'flex' : 'none';
+        }
+
+        function triggerAddFeedback(itemLabel) {
+            const floatBar = document.getElementById('floating-cart');
+            const feedbackEl = document.getElementById('float-feedback');
+            feedbackEl.innerText = `✓ +1 ${itemLabel}`;
+            floatBar.classList.remove('pulse');
+            void floatBar.offsetWidth;
+            floatBar.classList.add('pulse');
+
+            if (feedbackTimeout) clearTimeout(feedbackTimeout);
+            feedbackTimeout = setTimeout(() => {
+                floatBar.classList.remove('pulse');
+                feedbackEl.innerText = 'Appuyez pour voir le panier';
+            }, 1800);
+        }
+
+        async function callWaiter() {
+            const btn = document.getElementById('waiter-btn');
+            await fetch(`/api/tables/call/${tableNum}`, { method: 'POST' });
+            btn.classList.add('called');
+            btn.innerHTML = '✅ Appelé';
+            setTimeout(() => {
+                btn.classList.remove('called');
+                btn.innerHTML = '🛎️ Serveur';
+            }, 4000);
+        }
+
+        function toggleIng(id) {
+            const el = document.getElementById(id);
+            if (el) el.classList.toggle('open');
+        }
+
+        function getSortedCategories() {
+            return Object.keys(groupedMenu).sort((a, b) => {
+                const idxA = categoryOrder.indexOf(a);
+                const idxB = categoryOrder.indexOf(b);
+                return (idxA === -1 ? 99 : idxA) - (idxB === -1 ? 99 : idxB);
+            });
+        }
+
+        async function loadReviews() {
+            try {
+                const res = await fetch('/api/reviews/summary');
+                if (res.ok) {
+                    reviewsData = await res.json();
+                }
+            } catch (e) {}
+            const heroBtn = document.getElementById('hero-reviews-btn');
+            if (reviewsData.overall && reviewsData.overall.count > 0) {
+                heroBtn.innerHTML = `⭐ ${reviewsData.overall.avg} (${reviewsData.overall.count})`;
+            } else {
+                heroBtn.innerHTML = `⭐ Donner un avis`;
+            }
+        }
+
+        async function loadMenu() {
+            await loadReviews();
+            const res = await fetch('/api/menu');
+            allMenuItems = await res.json();
+
+            groupedMenu = allMenuItems.reduce((acc, item) => {
+                if (!acc[item.category]) acc[item.category] = [];
+                acc[item.category].push(item);
+                return acc;
+            }, {});
+
+            const availableCats = getSortedCategories();
+            if (availableCats.length > 0) {
+                currentCategory = availableCats[0];
+                renderCategoryTabs(availableCats);
+                renderMenuView();
+            } else {
+                document.getElementById('menu-container').innerHTML = '<p>Aucun article disponible.</p>';
+            }
+        }
+
+        function renderCategoryTabs(categories) {
+            const tabContainer = document.getElementById('category-tabs');
+            tabContainer.innerHTML = '';
+            categories.forEach(cat => {
+                const isActive = (!searchQuery && !filterTopRated && cat === currentCategory);
+                const icon = categoryIcons[cat] || '🍽️';
+                const btn = document.createElement('button');
+                btn.className = `cat-btn ${isActive ? 'active' : ''}`;
+                btn.textContent = `${icon} ${cat}`;
+                btn.onclick = () => selectCategory(cat, btn);
+                tabContainer.appendChild(btn);
+            });
+        }
+
+        function selectCategory(cat, btnEl) {
+            searchQuery = '';
+            filterTopRated = false;
+            document.getElementById('menu-search').value = '';
+            document.getElementById('search-clear').style.display = 'none';
+            document.getElementById('top-rated-btn').classList.remove('active');
+
+            currentCategory = cat;
+            renderCategoryTabs(getSortedCategories());
+            renderMenuView();
+            if (btnEl) {
+                btnEl.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+            }
+        }
+
+        function toggleTopRatedFilter() {
+            filterTopRated = !filterTopRated;
+            document.getElementById('top-rated-btn').classList.toggle('active', filterTopRated);
+            renderCategoryTabs(getSortedCategories());
+            renderMenuView();
+        }
+
+        function handleSearch(val) {
+            searchQuery = val.trim().toLowerCase();
+            document.getElementById('search-clear').style.display = searchQuery ? 'flex' : 'none';
+            renderCategoryTabs(getSortedCategories());
+            renderMenuView();
+        }
+
+        function clearSearch() {
+            searchQuery = '';
+            document.getElementById('menu-search').value = '';
+            document.getElementById('search-clear').style.display = 'none';
+            renderCategoryTabs(getSortedCategories());
+            renderMenuView();
+        }
+
+        function getCompatibleCartDishes(compatibleWith) {
+            if (!compatibleWith || compatibleWith === 'ALL') return [];
+            const allowedCats = compatibleWith.split(',');
+            return Object.keys(cart).filter(key => {
+                const entry = cart[key];
+                return !entry.isSupplement && allowedCats.includes(entry.category);
+            });
+        }
+
+        function getCompatLabel(compatibleWith) {
+            if (compatibleWith === 'ALL') return '✅ Compatible avec tout';
+            if (compatibleWith === 'Pizzas') return '🍕 1x max par Pizza';
+            if (compatibleWith === 'Sandwichs') return '🥖 1x max par Sandwich';
+            if (compatibleWith === 'Pizzas,Sandwichs') return '🍕🥖 1x max par Pizza ou Sandwich';
+            return '';
+        }
+
+        function getLockText(compatibleWith) {
+            if (compatibleWith === 'Pizzas') return 'Ajoutez une Pizza';
+            if (compatibleWith === 'Sandwichs') return 'Ajoutez un Sandwich';
+            return 'Ajoutez Pizza/Sandwich';
+        }
+
+        function getItemCartQty(item) {
+            if (item.variants) {
+                let sum = 0;
+                item.variants.split(',').forEach(p => {
+                    const size = p.split(':')[0];
+                    const fullName = `${item.name} (${size})`;
+                    if (cart[fullName]) sum += cart[fullName].qty;
+                });
+                return sum;
+            }
+            if (item.category === 'Suppléments' && item.compatible_with && item.compatible_with !== 'ALL') {
+                let sum = 0;
+                Object.keys(cart).forEach(k => {
+                    if (k.startsWith(`${item.name} [sur `)) sum += cart[k].qty;
+                });
+                return sum;
+            }
+            return cart[item.name] ? cart[item.name].qty : 0;
+        }
+
+        function createRatingButton(itemName) {
+            const stats = reviewsData.items[itemName];
+            const btn = document.createElement('button');
+            if (stats && stats.count > 0) {
+                btn.className = 'btn-rate-item has-score';
+                btn.innerHTML = `⭐ ${stats.avg} (${stats.count})`;
+            } else {
+                btn.className = 'btn-rate-item';
+                btn.innerHTML = `☆ Noter`;
+            }
+            btn.onclick = () => openItemReviewModal(itemName);
+            return btn;
+        }
+
+        function renderMenuView() {
+            const container = document.getElementById('menu-container');
+            container.innerHTML = '';
+
+            let itemsToRender = [];
+            let headingTitle = currentCategory;
+
+            if (filterTopRated) {
+                itemsToRender = allMenuItems
+                    .filter(item => reviewsData.items[item.name] && reviewsData.items[item.name].avg >= 4.0)
+                    .sort((a, b) => (reviewsData.items[b.name]?.avg || 0) - (reviewsData.items[a.name]?.avg || 0));
+                headingTitle = "⭐ Plats les Mieux Notés";
+            } else if (searchQuery) {
+                itemsToRender = allMenuItems.filter(item =>
+                    item.name.toLowerCase().includes(searchQuery) ||
+                    (item.ingredients && item.ingredients.toLowerCase().includes(searchQuery)) ||
+                    item.category.toLowerCase().includes(searchQuery)
+                );
+                headingTitle = `Résultats pour "${searchQuery}"`;
+            } else {
+                itemsToRender = groupedMenu[currentCategory] || [];
+            }
+
+            const headerDiv = document.createElement('div');
+            headerDiv.className = 'section-heading';
+            headerDiv.innerHTML = `<h3>${escapeHtml(headingTitle)}</h3><span class="section-count">${itemsToRender.length} plat(s)</span>`;
+            container.appendChild(headerDiv);
+
+            if (!searchQuery && !filterTopRated && currentCategory === 'Suppléments') {
+                const hasPizzaOrSandwich = getCompatibleCartDishes('Pizzas,Sandwichs').length > 0;
+                if (!hasPizzaOrSandwich) {
+                    const hint = document.createElement('div');
+                    hint.className = 'supp-hint';
+                    hint.textContent = "💡 Ajoutez d'abord une Pizza ou un Sandwich au panier pour débloquer leurs suppléments dédiés (1 par plat).";
+                    container.appendChild(hint);
+                }
+            }
+
+            if (itemsToRender.length === 0) {
+                const emptyMsg = filterTopRated
+                    ? "Aucun plat noté 4★+ pour le moment. Soyez le premier à noter votre plat !"
+                    : "Aucun plat trouvé.";
+                container.innerHTML += `<p style="text-align:center; color:#d4d4d8; padding:20px 0;">${emptyMsg}</p>`;
+                return;
+            }
+
+            itemsToRender.forEach(item => {
+                const card = document.createElement('div');
+                const inCartQty = getItemCartQty(item);
+                const stats = reviewsData.items[item.name];
+                const isTopBadge = (stats && stats.count >= 1 && stats.avg >= 4.5)
+                    ? `<span class="top-rated-badge">🔥 Top Avis</span>`
+                    : '';
+
+                card.className = `item-card ${inCartQty > 0 ? 'in-cart' : ''}`;
+
+                const catBadge = (searchQuery || filterTopRated) ? `<span class="cat-tag">${item.category}</span>` : '';
+                const qtyBadge = inCartQty > 0 ? `<span class="in-cart-pill">${inCartQty} dans le panier</span>` : '';
+
+                // --- SUPPLEMENTS RENDERING ---
+                if (item.category === 'Suppléments') {
+                    const compat = item.compatible_with || 'ALL';
+                    const badgeHTML = `<span class="compat-badge">${getCompatLabel(compat)}</span>`;
+
+                    const topDiv = document.createElement('div');
+                    topDiv.className = 'item-top';
+
+                    const leftInfo = document.createElement('div');
+                    leftInfo.innerHTML = `
+                        <div class="item-title-row">
+                            <span class="item-name">${escapeHtml(item.name)}</span>
+                            ${catBadge}
+                            ${isTopBadge}
+                            ${qtyBadge}
+                        </div>
+                        <div class="item-price">${item.price} DA</div>
+                        ${badgeHTML}
+                    `;
+
+                    const metaBar = document.createElement('div');
+                    metaBar.className = 'item-meta-bar';
+                    metaBar.appendChild(createRatingButton(item.name));
+                    leftInfo.appendChild(metaBar);
+
+                    topDiv.appendChild(leftInfo);
+
+                    const rightBox = document.createElement('div');
+
+                    if (compat === 'ALL') {
+                        const btn = document.createElement('button');
+                        btn.className = 'btn-add';
+                        btn.textContent = '+ Ajouter';
+                        btn.onclick = () => addMainItem(item.name, item.price, item.category);
+                        rightBox.appendChild(btn);
+                        topDiv.appendChild(rightBox);
+                        card.appendChild(topDiv);
+                    } else {
+                        const matchingDishes = getCompatibleCartDishes(compat);
+                        if (matchingDishes.length === 0) {
+                            const btn = document.createElement('button');
+                            btn.className = 'btn-disabled';
+                            btn.disabled = true;
+                            btn.textContent = getLockText(compat);
+                            rightBox.appendChild(btn);
+                            topDiv.appendChild(rightBox);
+                            card.appendChild(topDiv);
+                        } else if (matchingDishes.length === 1) {
+                            const target = matchingDishes[0];
+                            const maxAllowed = cart[target].qty;
+                            const label = `${item.name} [sur ${target}]`;
+                            const currentAdded = cart[label] ? cart[label].qty : 0;
+
+                            const btn = document.createElement('button');
+                            if (currentAdded >= maxAllowed) {
+                                btn.className = 'btn-added-done';
+                                btn.disabled = true;
+                                btn.textContent = `✅ Ajouté (${currentAdded}/${maxAllowed})`;
+                            } else {
+                                const ratioText = maxAllowed > 1 ? ` (${currentAdded}/${maxAllowed})` : '';
+                                btn.className = 'btn-add';
+                                btn.textContent = `+ Ajouter${ratioText}`;
+                                btn.onclick = () => addSupplement(item.name, item.price, compat, target);
+                            }
+                            rightBox.appendChild(btn);
+                            topDiv.appendChild(rightBox);
+                            card.appendChild(topDiv);
+                        } else {
+                            card.appendChild(topDiv);
+                            const targetWrap = document.createElement('div');
+                            targetWrap.className = 'target-list';
+                            matchingDishes.forEach(target => {
+                                const maxAllowed = cart[target].qty;
+                                const label = `${item.name} [sur ${target}]`;
+                                const currentAdded = cart[label] ? cart[label].qty : 0;
+
+                                const btn = document.createElement('button');
+                                if (currentAdded >= maxAllowed) {
+                                    btn.className = 'btn-added-done';
+                                    btn.disabled = true;
+                                    btn.textContent = `✅ ${target} (${currentAdded}/${maxAllowed})`;
+                                } else {
+                                    const ratioText = maxAllowed > 1 ? ` (${currentAdded}/${maxAllowed})` : '';
+                                    btn.className = 'btn-add-target';
+                                    btn.textContent = `+ Sur ${target}${ratioText}`;
+                                    btn.onclick = () => addSupplement(item.name, item.price, compat, target);
+                                }
+                                targetWrap.appendChild(btn);
+                            });
+                            card.appendChild(targetWrap);
+                        }
+                    }
+
+                    container.appendChild(card);
+                    return;
+                }
+
+                // --- STANDARD DISHES & PIZZAS RENDERING ---
+                const topDiv = document.createElement('div');
+                topDiv.className = 'item-top';
+
+                const infoDiv = document.createElement('div');
+                infoDiv.innerHTML = `
+                    <div class="item-title-row">
+                        <span class="item-name">${escapeHtml(item.name)}</span>
+                        ${catBadge}
+                        ${isTopBadge}
+                        ${qtyBadge}
+                    </div>
+                    ${!item.variants ? `<div class="item-price">${item.price} DA</div>` : ''}
+                `;
+
+                const metaBar = document.createElement('div');
+                metaBar.className = 'item-meta-bar';
+
+                if (item.ingredients) {
+                    const ingBtn = document.createElement('button');
+                    ingBtn.className = 'btn-info';
+                    ingBtn.innerHTML = 'ℹ️ Ingrédients';
+                    ingBtn.onclick = () => toggleIng(`ing-${item.id}`);
+                    metaBar.appendChild(ingBtn);
+                }
+
+                metaBar.appendChild(createRatingButton(item.name));
+                infoDiv.appendChild(metaBar);
+
+                if (item.ingredients) {
+                    const ingBox = document.createElement('div');
+                    ingBox.id = `ing-${item.id}`;
+                    ingBox.className = `ingredients-text ${searchQuery ? 'open' : ''}`;
+                    ingBox.textContent = item.ingredients;
+                    infoDiv.appendChild(ingBox);
+                }
+
+                topDiv.appendChild(infoDiv);
+
+                if (!item.variants) {
+                    const addBtn = document.createElement('button');
+                    addBtn.className = 'btn-add';
+                    addBtn.textContent = '+ Ajouter';
+                    addBtn.onclick = () => addMainItem(item.name, item.price, item.category);
+                    topDiv.appendChild(addBtn);
+                }
+
+                card.appendChild(topDiv);
+
+                if (item.variants) {
+                    const grid = document.createElement('div');
+                    grid.className = 'variants-grid';
+                    item.variants.split(',').forEach(p => {
+                        const [size, vprice] = p.split(':');
+                        const fullName = `${item.name} (${size})`;
+                        const vQty = cart[fullName] ? cart[fullName].qty : 0;
+
+                        const vBtn = document.createElement('button');
+                        vBtn.className = `variant-btn ${vQty > 0 ? 'has-qty' : ''}`;
+                        vBtn.innerHTML = `
+                            <span class="v-size">${size}${vQty > 0 ? ` (${vQty})` : ''}</span>
+                            <span class="v-price">${vprice} DA</span>
+                        `;
+                        vBtn.onclick = () => addMainItem(fullName, parseFloat(vprice), item.category);
+                        grid.appendChild(vBtn);
+                    });
+                    card.appendChild(grid);
+                }
+
+                container.appendChild(card);
+            });
+        }
+
+        loadMenu();
+
+        function addMainItem(name, price, category) {
+            if (cart[name]) cart[name].qty += 1;
+            else cart[name] = { price: price, qty: 1, category: category, isSupplement: false };
+            renderCart();
+            triggerAddFeedback(name);
+            renderMenuView();
+        }
+
+        function addSupplement(suppName, price, compatibleWith, targetDish) {
+            const parentDish = cart[targetDish];
+            if (!parentDish) return;
+
+            const label = `${suppName} [sur ${targetDish}]`;
+            const currentQty = cart[label] ? cart[label].qty : 0;
+            if (currentQty >= parentDish.qty) return;
+
+            if (cart[label]) cart[label].qty += 1;
+            else {
+                cart[label] = {
+                    price: price,
+                    qty: 1,
+                    category: 'Suppléments',
+                    isSupplement: true,
+                    compatibleWith: compatibleWith,
+                    targetDish: targetDish
+                };
+            }
+            renderCart();
+            triggerAddFeedback(suppName);
+            renderMenuView();
+        }
+
+        function syncSupplementsWithDishes() {
+            let adjusted = false;
+            Object.keys(cart).forEach(key => {
+                const entry = cart[key];
+                if (entry.isSupplement && entry.targetDish) {
+                    const parent = cart[entry.targetDish];
+                    if (!parent) {
+                        delete cart[key];
+                        adjusted = true;
+                    } else if (entry.qty > parent.qty) {
+                        entry.qty = parent.qty;
+                        adjusted = true;
+                    }
+                }
+            });
+            if (adjusted) {
+                alert("⚠️ Les suppléments liés ont été ajustés selon la quantité de plats dans votre panier.");
+            }
+        }
+
+        function removeFromCart(name) {
+            if (cart[name].qty > 1) cart[name].qty -= 1;
+            else delete cart[name];
+            syncSupplementsWithDishes();
+            renderCart();
+            renderMenuView();
+        }
+
+        function renderCart() {
+            const container = document.getElementById('cart-items');
+            let total = 0;
+            let totalCount = 0;
+            let keys = Object.keys(cart);
+
+            if (keys.length === 0) {
+                container.innerHTML = '<p style="color:#a1a1aa; font-size:13.5px; margin:6px 0;">Votre panier est vide. Sélectionnez un plat ci-dessus.</p>';
+                document.getElementById('cart-total').innerText = '0';
+                document.getElementById('cart-count').innerText = '0';
+                document.getElementById('float-total').innerText = '0';
+                document.getElementById('float-count').innerText = '0';
+                updateFloatingVisibility();
+                return;
+            }
+
+            container.innerHTML = '';
+            keys.forEach(name => {
+                const itemTotal = cart[name].price * cart[name].qty;
+                total += itemTotal;
+                totalCount += cart[name].qty;
+
+                const row = document.createElement('div');
+                row.className = 'cart-row';
+
+                const info = document.createElement('div');
+                info.className = 'cart-item-info';
+                info.innerHTML = `<b>${cart[name].qty}x</b> ${escapeHtml(name)}`;
+
+                const actions = document.createElement('div');
+                actions.className = 'cart-item-actions';
+                actions.innerHTML = `<span>${itemTotal} DA</span>`;
+
+                const delBtn = document.createElement('button');
+                delBtn.className = 'btn-remove';
+                delBtn.textContent = '✕';
+                delBtn.onclick = () => removeFromCart(name);
+
+                actions.appendChild(delBtn);
+                row.appendChild(info);
+                row.appendChild(actions);
+                container.appendChild(row);
+            });
+
+            document.getElementById('cart-total').innerText = total;
+            document.getElementById('cart-count').innerText = totalCount;
+            document.getElementById('float-total').innerText = total;
+            document.getElementById('float-count').innerText = totalCount;
+            updateFloatingVisibility();
+        }
+
+        async function submitGroupedOrder() {
+            let keys = Object.keys(cart);
+            if (keys.length === 0) return alert("Veuillez ajouter des articles d'abord !");
+            let itemsSummary = keys.map(k => `${cart[k].qty}x ${k}`).join(', ');
+            let totalPrice = parseFloat(document.getElementById('cart-total').innerText);
+
+            const res = await fetch('/api/orders', {
+                method: 'POST', headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ table_number: tableNum, items: itemsSummary, total_price: totalPrice })
+            });
+            const data = await res.json();
+            lastSubmittedOrder = { id: data.order_id, items: itemsSummary };
+            cart = {};
+            renderCart();
+            renderMenuView();
+
+            const statusBox = document.getElementById('status-box');
+            statusBox.style.display = 'block';
+            statusBox.scrollIntoView({ behavior: 'smooth' });
+
+            if (statusTimer) clearInterval(statusTimer);
+            checkStatus(data.order_id);
+            statusTimer = setInterval(() => checkStatus(data.order_id), 2000);
+        }
+
+        async function cancelOrder(orderId) {
+            await fetch(`/api/orders/${orderId}`, { method: 'DELETE' });
+            clearInterval(statusTimer);
+            const box = document.getElementById('status-box');
+            box.innerHTML = '<div style="text-align:center; font-weight:800; color:#fca5a5;">❌ Commande annulée.</div>';
+        }
+
+        async function checkStatus(orderId) {
+            const res = await fetch(`/api/orders/${orderId}`);
+            if (!res.ok) return;
+            const order = await res.json();
+            const box = document.getElementById('status-box');
+
+            if (order.status === 'pending') {
+                box.innerHTML = `
+                    <div style="font-weight:800; font-size:15px;">⏳ Commande #${order.id} — En attente de validation</div>
+                    <div class="progress-steps">
+                        <div class="step active">1. Validation</div>
+                        <div class="step">2. Cuisine</div>
+                        <div class="step">3. Prête</div>
+                    </div>
+                    <button class="btn-cancel-order" onclick="cancelOrder(${order.id})">Annuler la commande</button>
+                `;
+            } else if (order.status === 'approved') {
+                box.innerHTML = `
+                    <div style="font-weight:800; font-size:15px; color:#38bdf8;">🍳 Commande #${order.id} — En cours de préparation</div>
+                    <div class="progress-steps">
+                        <div class="step done">✓ Validée</div>
+                        <div class="step active">2. Cuisine</div>
+                        <div class="step">3. Prête</div>
+                    </div>
+                `;
+            } else if (order.status === 'completed') {
+                const alreadyReviewed = reviewedOrderIds.has(order.id);
+                const reviewCTA = alreadyReviewed
+                    ? `<div style="margin-top:10px; text-align:center; color:#86efac; font-size:13px; font-weight:800;">✅ Merci pour votre évaluation !</div>`
+                    : `<button class="btn-review-order" onclick="openOrderReviewModal(${order.id})">⭐ Notez votre repas &amp; le service</button>`;
+
+                box.innerHTML = `
+                    <div style="font-weight:800; font-size:16px; color:#86efac;">🎉 Commande #${order.id} — Prête ! Bon appétit !</div>
+                    <div class="progress-steps">
+                        <div class="step done">✓ Validée</div>
+                        <div class="step done">✓ Cuisine</div>
+                        <div class="step done">✓ Prête</div>
+                    </div>
+                    ${reviewCTA}
+                `;
+                clearInterval(statusTimer);
+            } else if (order.status === 'declined') {
+                box.innerHTML = `<div style="text-align:center; font-weight:800; color:#fca5a5;">❌ Commande #${order.id} refusée par la caisse.</div>`;
+                clearInterval(statusTimer);
+            }
+        }
+
+        /* --- SMART REVIEW ENGINE --- */
+        function extractBaseItemNames(itemsSummary) {
+            const seen = new Set();
+            const result = [];
+            itemsSummary.split(', ').forEach(raw => {
+                let name = raw.replace(/^\d+x\s+/, '');
+                name = name.replace(/\s+\[sur\s+.*\]$/, '');
+                name = name.replace(/\s+\((Mini|Nrml|Mega|Turk)\)$/, '');
+                if (name && !seen.has(name)) {
+                    seen.add(name);
+                    result.push(name);
+                }
+            });
+            return result;
+        }
+
+        function openOrderReviewModal(orderId) {
+            const itemsStr = (lastSubmittedOrder && lastSubmittedOrder.id === orderId) ? lastSubmittedOrder.items : '';
+            const dishNames = extractBaseItemNames(itemsStr);
+            activeOrderIdForReview = orderId;
+
+            activeDrafts = dishNames.map(name => ({
+                target_type: 'item',
+                item_name: name,
+                rating: 5,
+                tags: new Set(),
+                comment: ''
+            }));
+            activeDrafts.push({
+                target_type: 'service',
+                item_name: 'Service & Ambiance',
+                rating: 5,
+                tags: new Set(),
+                comment: ''
+            });
+
+            document.getElementById('review-modal-title').innerHTML = `⭐ Évaluer la <span>Commande #${orderId}</span>`;
+            renderReviewModalContent(null);
+            document.getElementById('review-modal').style.display = 'flex';
+        }
+
+        function openItemReviewModal(itemName) {
+            activeOrderIdForReview = null;
+            activeDrafts = [{
+                target_type: 'item',
+                item_name: itemName,
+                rating: 5,
+                tags: new Set(),
+                comment: ''
+            }];
+            document.getElementById('review-modal-title').innerHTML = `⭐ Avis : <span>${escapeHtml(itemName)}</span>`;
+            renderReviewModalContent(itemName);
+            document.getElementById('review-modal').style.display = 'flex';
+        }
+
+        function openGlobalReviewModal() {
+            activeOrderIdForReview = null;
+            activeDrafts = [
+                { target_type: 'cuisine', item_name: 'Cuisine & Qualité des Plats', rating: 5, tags: new Set(), comment: '' },
+                { target_type: 'service', item_name: 'Service & Accueil', rating: 5, tags: new Set(), comment: '' },
+                { target_type: 'speed', item_name: 'Rapidité de Préparation', rating: 5, tags: new Set(), comment: '' },
+                { target_type: 'cleanliness', item_name: 'Propreté & Ambiance', rating: 5, tags: new Set(), comment: '' }
+            ];
+            document.getElementById('review-modal-title').innerHTML = `⭐ Avis Complet <span>Fratello Beşiktaş</span>`;
+            renderReviewModalContent('ALL');
+            document.getElementById('review-modal').style.display = 'flex';
+        }
+
+        function closeReviewModal() {
+            document.getElementById('review-modal').style.display = 'none';
+        }
+
+        function renderReviewModalContent(filterTarget) {
+            const body = document.getElementById('review-modal-body');
+            body.innerHTML = '';
+
+            activeDrafts.forEach((draft) => {
+                const block = document.createElement('div');
+                block.className = 'review-target-block';
+
+                const icon = draft.target_type === 'item' ? '🍽️ ' : '🏪 ';
+                const titleRow = document.createElement('div');
+                titleRow.className = 'review-target-title';
+                titleRow.innerHTML = `<span>${icon}${escapeHtml(draft.item_name)}</span><span style="color:var(--star-gold); font-size:13px;">${draft.rating}/5 ★</span>`;
+                block.appendChild(titleRow);
+
+                const starsDiv = document.createElement('div');
+                starsDiv.className = 'star-picker';
+                for (let s = 1; s <= 5; s++) {
+                    const sb = document.createElement('button');
+                    sb.type = 'button';
+                    sb.className = `star-btn ${s <= draft.rating ? 'lit' : ''}`;
+                    sb.textContent = '★';
+                    sb.onclick = () => {
+                        draft.rating = s;
+                        draft.tags.clear();
+                        renderReviewModalContent(filterTarget);
+                    };
+                    starsDiv.appendChild(sb);
+                }
+                block.appendChild(starsDiv);
+
+                const tagsPool = draft.rating >= 4 ? positiveTags : negativeTags;
+                const tagsDiv = document.createElement('div');
+                tagsDiv.className = 'quick-tags-wrap';
+                tagsPool.forEach(tag => {
+                    const tb = document.createElement('button');
+                    tb.type = 'button';
+                    tb.className = `q-tag ${draft.tags.has(tag) ? 'selected' : ''}`;
+                    tb.textContent = tag;
+                    tb.onclick = () => {
+                        if (draft.tags.has(tag)) draft.tags.delete(tag);
+                        else draft.tags.add(tag);
+                        renderReviewModalContent(filterTarget);
+                    };
+                    tagsDiv.appendChild(tb);
+                });
+                block.appendChild(tagsDiv);
+
+                const inp = document.createElement('input');
+                inp.type = 'text';
+                inp.className = 'review-input';
+                inp.placeholder = draft.rating >= 4
+                    ? "Un petit mot pour le chef ? (optionnel)"
+                    : "Dites-nous ce qu'on peut améliorer...";
+                inp.value = draft.comment;
+                inp.oninput = (e) => { draft.comment = e.target.value; };
+                block.appendChild(inp);
+
+                body.appendChild(block);
+            });
+
+            const submitBtn = document.createElement('button');
+            submitBtn.className = 'btn-order';
+            submitBtn.style.marginTop = '4px';
+            submitBtn.textContent = '✅ Envoyer mon avis';
+            submitBtn.onclick = submitAllReviews;
+            body.appendChild(submitBtn);
+
+            if (filterTarget) {
+                const matchingReviews = filterTarget === 'ALL'
+                    ? (reviewsData.recent || [])
+                    : (reviewsData.recent || []).filter(r => r.item_name === filterTarget);
+
+                const listHeader = document.createElement('div');
+                listHeader.style.cssText = 'margin-top:18px; padding-top:12px; border-top:1px solid rgba(255,255,255,0.15); font-weight:800; font-size:13.5px; color:var(--star-gold); margin-bottom:10px;';
+                listHeader.textContent = `💬 Derniers avis (${matchingReviews.length})`;
+                body.appendChild(listHeader);
+
+                if (matchingReviews.length === 0) {
+                    const p = document.createElement('p');
+                    p.style.cssText = 'color:#a1a1aa; font-size:12.5px;';
+                    p.textContent = 'Aucun avis écrit pour le moment.';
+                    body.appendChild(p);
+                } else {
+                    matchingReviews.forEach(rev => {
+                        const rc = document.createElement('div');
+                        rc.className = 'past-review-card';
+                        const starsStr = '★'.repeat(rev.rating) + '☆'.repeat(5 - rev.rating);
+                        const verifiedBadge = rev.is_verified ? `<span class="verified-chip">✓ Commande vérifiée</span>` : '';
+                        const targetLabel = filterTarget === 'ALL' ? ` • <b>${escapeHtml(rev.item_name)}</b>` : '';
+
+                        rc.innerHTML = `
+                            <div style="display:flex; justify-content:space-between; align-items:center; gap:6px; flex-wrap:wrap;">
+                                <span style="color:var(--star-gold); font-size:13px;">${starsStr}${targetLabel}</span>
+                                ${verifiedBadge}
+                            </div>
+                            ${rev.tags ? `<div style="font-size:11.5px; color:#fde047; margin-top:4px;">${escapeHtml(rev.tags)}</div>` : ''}
+                            ${rev.comment ? `<div style="font-size:12.5px; color:#f4f4f5; margin-top:4px;">« ${escapeHtml(rev.comment)} »</div>` : ''}
+                        `;
+                        body.appendChild(rc);
+                    });
+                }
+            }
+        }
+
+        async function submitAllReviews() {
+            const payload = {
+                table_number: tableNum,
+                order_id: activeOrderIdForReview,
+                reviews: activeDrafts.map(d => ({
+                    target_type: d.target_type,
+                    item_name: d.item_name,
+                    rating: d.rating,
+                    tags: Array.from(d.tags).join(' • '),
+                    comment: d.comment
+                }))
+            };
+
+            const res = await fetch('/api/reviews/batch', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            if (!res.ok) {
+                const err = await res.json();
+                alert(err.detail || "Erreur lors de l'envoi.");
+                return;
+            }
+
+            if (activeOrderIdForReview !== null) {
+                reviewedOrderIds.add(activeOrderIdForReview);
+                checkStatus(activeOrderIdForReview);
+            }
+
+            closeReviewModal();
+            await loadReviews();
+            renderMenuView();
+            alert("⭐ Merci ! Votre avis a bien été enregistré.");
+        }
+    </script>
+</body>
+</html>

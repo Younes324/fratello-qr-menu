@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kitchen Display System</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; background: #181818; color: white; }
+        .section-box { border: 1px solid #444; background: #222; padding: 15px; margin-bottom: 20px; border-radius: 8px; }
+        .stock-item { display: inline-block; background: #333; padding: 10px 15px; margin: 5px; border-radius: 5px; }
+        .kitchen-card { border: 2px solid #28a745; background: #222; padding: 15px; margin-bottom: 10px; border-radius: 5px; }
+        .btn-stock { background: #28a745; color: white; border: none; padding: 5px 10px; cursor: pointer; border-radius: 3px; }
+        .btn-soldout { background: #dc3545; color: white; border: none; padding: 5px 10px; cursor: pointer; border-radius: 3px; }
+        .btn-ready { background: #007bff; color: white; padding: 10px 15px; border: none; cursor: pointer; font-size: 16px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <!-- Out of Stock Management -->
+    <div class="section-box">
+        <h2>📦 Kitchen Menu Stock Control</h2>
+        <p>Click button to mark finished items as <b>Sold Out</b> (automatically removes item from customer menu):</p>
+        <div id="stock-container"></div>
+    </div>
+
+    <!-- Approved Orders -->
+    <h2>🍳 Active Kitchen Orders</h2>
+    <div id="kitchen-list"></div>
+
+    <script>
+        // Load menu stock availability
+        async function fetchMenuStock() {
+            const res = await fetch('/api/menu/all');
+            const items = await res.json();
+            const container = document.getElementById('stock-container');
+            container.innerHTML = '';
+
+            items.forEach(item => {
+                const isAvail = item.is_available === 1;
+                container.innerHTML += `
+                    <div class="stock-item">
+                        <b>${item.name}</b>: ${isAvail ? '<span style="color:#28a745;">In Stock</span>' : '<span style="color:#dc3545;">FINISHED</span>'} 
+                        <br><br>
+                        <button class="${isAvail ? 'btn-soldout' : 'btn-stock'}" onclick="toggleStock(${item.id}, ${isAvail ? 0 : 1})">
+                            ${isAvail ? 'Mark Finished' : 'Mark In Stock'}
+                        </button>
+                    </div>
+                `;
+            });
+        }
+
+        async function toggleStock(itemId, newStatus) {
+            await fetch(`/api/menu/${itemId}/availability`, {
+                method: 'PATCH',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ is_available: newStatus })
+            });
+            fetchMenuStock();
+        }
+
+        // Load kitchen orders
+        async function fetchKitchenOrders() {
+            const res = await fetch('/api/orders/kitchen');
+            const orders = await res.json();
+            const container = document.getElementById('kitchen-list');
+            container.innerHTML = orders.length === 0 ? '<p style="color:#aaa;">No orders to cook.</p>' : '';
+            
+            orders.forEach(order => {
+                container.innerHTML += `
+                    <div class="kitchen-card">
+                        <h3>${order.table_number === 0 ? '🛍️ À Emporter (Comptoir)' : '🪑 Table ' + order.table_number} — Commande #${order.id}</h3>
+                        <h2 style="color:#ffc107;">${order.items}</h2>
+                        <button class="btn-ready" onclick="markDone(${order.id})">Mark as Ready</button>
+                    </div>
+                `;
+            });
+        }
+
+        async function markDone(orderId) {
+            await fetch(`/api/orders/${orderId}/status`, {
+                method: 'PATCH',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ status: 'completed' })
+            });
+            fetchKitchenOrders();
+        }
+
+        setInterval(() => {
+            fetchKitchenOrders();
+        }, 2000);
+
+        fetchMenuStock();
+        fetchKitchenOrders();
+    </script>
+</body>
+</html>
